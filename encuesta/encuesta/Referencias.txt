@@ -3,3 +3,5 @@
 			Nueva Encuesta = btnNuevaencuesta
 			Ver Encuestas = btnVerencuestas
 			Tareas = btnTareas
+
+Modificacion en app.cs para navigation MainPage = new NavigationPage(new MainPage());
