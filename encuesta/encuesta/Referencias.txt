@@ -1,0 +1,5 @@
+﻿Pantalla Inicio
+	Botones
+			Nueva Encuesta = btnNuevaencuesta
+			Ver Encuestas = btnVerencuestas
+			Tareas = btnTareas

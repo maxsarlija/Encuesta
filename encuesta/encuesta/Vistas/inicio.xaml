@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="encuesta.Vistas.inicio">
+    <StackLayout VerticalOptions="Center" Margin="60">
+        
+     <!--Boton Crear Nueva Encuesta-->
+     <Button Text="Nueva Encuesta" Clicked="btnNuevaencuesta" />
+
+     <!--Boton Ver Nueva Encuesta-->
+        <Button Text="Ver Encuesta" Clicked="btnVerencuestas"/>
+
+    <!--Boton Crear Tareas-->
+        <Button Text="Tareas" Clicked="btntareas"/>
+    </StackLayout>
+    
+</ContentPage>
