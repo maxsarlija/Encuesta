@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:encuesta"
+             x:Class="encuesta.MainPage">
+
+    <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+
+        <Image Source="backgroundLogin.png" Aspect="Fill"></Image>
+
+        <!-- LOGO -->
+        <Image Source="logoLogin.png"
+               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.3}"
+               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.3}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.3}"></Image>
+
+        <!-- USERNAME AND PASSWORD -->
+        <StackLayout Padding="10" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" WidthRequest="300" BackgroundColor="White"  Orientation="Vertical"
+                     RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"
+        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.50}">
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <Image Source="userLogin.png" WidthRequest="25" HorizontalOptions="Start" VerticalOptions="Center" />
+                <Entry  TextColor="Black" Placeholder=" Username" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" PlaceholderColor="Black"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Image Source="claveLogin.png" WidthRequest="25" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <Entry IsPassword="true"  TextColor="Black" Placeholder=" Password" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" PlaceholderColor="Black"/>
+            </StackLayout>
+        </StackLayout>
+
+        <!-- LOGIN BUTTON -->
+        <Image Source="btnlogin.png"
+               RelativeLayout.XConstraint="{ConstraintExpression Type=Constant, Constant=0}"
+               RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"
+               RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"></Image>
+    </RelativeLayout>
+
+
+</ContentPage>
