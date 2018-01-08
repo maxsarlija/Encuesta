@@ -39,6 +39,8 @@
                RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}"
                RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"></Image>
+
+        <!-- PRUEBA DE LAYAUTS -->
         <Button Text="test layouts" Clicked="testBTN"/>
     </RelativeLayout>
 

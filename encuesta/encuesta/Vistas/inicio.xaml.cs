@@ -17,20 +17,20 @@ namespace encuesta.Vistas
 			InitializeComponent ();
 		}
 
-       //Accion Boton Nueva Encuesta
-        /*async void btnNuevaencuesta(object sender, EventArgs e)
+        //Accion Boton Nueva Encuesta
+        async void btnNuevaencuesta(object sender, EventArgs e)
         {
-
+           await Navigation.PushAsync(new Vistas.nuevaencuesta());
         }
 
         //Accion Boton Ver Encuestas
-        async void btnVerencuestas(object sender, EventArgs e)
+        /*async void btnVerencuestas(object sender, EventArgs e)
         {
 
         }
 
         //Accion Boton Tareas
-        async void btnTareas(object sender, EventArgs e)
+        async void evolucionCoaching(object sender, EventArgs e)
         {
 
         }*/
