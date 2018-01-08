@@ -11,7 +11,7 @@
         <Button Text="Ver Encuesta" />
 
         <!--Boton Crear Tareas-->
-        <Button Text="Tareas" />
+        <Button Text="Evolucion Coaching" />
     </StackLayout>
     
 </ContentPage>
