@@ -5,9 +5,16 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
 
+            <!--Nueva Encuesta TIPO WOS -->
             <Button Text="WOS"/>
+
+            <!--Nueva Encuesta TIPO COACHING -->
             <Button Text="COACHING"/>
+
+            <!--Nueva Encuesta TIPO COACHING WOS -->
             <Button Text="PLANILLA DE COACHING WOS"/>
+
+            <!--Nueva Encuesta DINAMINA DE LLENADO DE PLANILLA -->
             <Button Text="DINAMICA DE LLENADO DE LA PLANILLA"/>
             
         </StackLayout>

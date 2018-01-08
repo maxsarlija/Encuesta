@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="encuesta.Vistas.evolucionCoaching">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout VerticalOptions="Center">
+
+            <!--CREAR 2 CONTROLES TIPO LISTVIEW PARA SELECIONAR CLIENTE Y VISITA 1 HASTA 4-->
+
+            <!--Boton para confirmar y ver la evolucion de los datos solicitados-->
+            <Button Text="ACEPTAR"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
