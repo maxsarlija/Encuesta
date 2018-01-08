@@ -5,13 +5,13 @@
     <StackLayout VerticalOptions="Center" Margin="50">
         
      <!--Boton Crear Nueva Encuesta-->
-        <Button Text="Nueva Encuesta" Clicked="btnNuevaencuesta" />
+        <Button Text="Nueva Encuesta" />
 
         <!--Boton Ver Nueva Encuesta-->
-        <Button Text="Ver Encuesta" Clicked="btnVerencuestas"/>
+        <Button Text="Ver Encuesta" />
 
         <!--Boton Crear Tareas-->
-        <Button Text="Tareas" Clicked="btnTareas"/>
+        <Button Text="Tareas" />
     </StackLayout>
     
 </ContentPage>

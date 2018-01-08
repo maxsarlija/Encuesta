@@ -18,7 +18,7 @@ namespace encuesta.Vistas
 		}
 
        //Accion Boton Nueva Encuesta
-        async void btnNuevaencuesta(object sender, EventArgs e)
+        /*async void btnNuevaencuesta(object sender, EventArgs e)
         {
 
         }
@@ -33,6 +33,6 @@ namespace encuesta.Vistas
         async void btnTareas(object sender, EventArgs e)
         {
 
-        }
+        }*/
     }
 }

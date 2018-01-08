@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Xamarin.Forms;
 
 namespace encuesta
@@ -11,7 +7,9 @@ namespace encuesta
 	{
 		public MainPage()
 		{
-			InitializeComponent();
-		}
+            InitializeComponent();
+            var database = new Database("Encuesta"); // Creates (if does not exist) a database named People
+            database.CreateTable<Usuario>(); // Creates (if does not exist) a table of type Person
+        }
 	}
 }
