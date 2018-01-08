@@ -35,13 +35,13 @@
     <EmbeddedResource Update="Vistas\encuestas\encuestaWos.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vistas\evolucionCoaching.xaml">
+    <EmbeddedResource Update="Vistas\evolucionEncuestas\evolucionCoaching.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vistas\evolucionGrafico.xaml">
+    <EmbeddedResource Update="Vistas\evolucionEncuestas\evolucionGrafico.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vistas\evolucionVisita.xaml">
+    <EmbeddedResource Update="Vistas\evolucionEncuestas\evolucionVisita.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Vistas\inicio.xaml">
