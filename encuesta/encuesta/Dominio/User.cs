@@ -2,8 +2,14 @@
 using System;
 namespace encuesta
 {
-    public class Usuario : BaseItem
+    public class User : BaseItem
     {
+        public User(string _username, string _password)
+        {
+            Username = _username;
+            Password = _password;
+        }
+
         public string Username { get; set; }
         public string Password { get; set; }
 

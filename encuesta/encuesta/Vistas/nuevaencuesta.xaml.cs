@@ -11,9 +11,14 @@ namespace encuesta.Vistas
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class nuevaencuesta : ContentPage
 	{
-		public nuevaencuesta ()
-		{
-			InitializeComponent ();
-		}
+        public nuevaencuesta()
+        {
+            InitializeComponent();
+
+            var database = new Database("Encuesta");
+
+            var res = database.Query<Customer>("SELECT * FROM Customer WHERE Name = 'Restaurant'");
+            Address.Text = res[0].Name;
+        }
 	}
 }

@@ -16,7 +16,9 @@
 
             <!--Nueva Encuesta DINAMINA DE LLENADO DE PLANILLA -->
             <Button Text="DINAMICA DE LLENADO DE LA PLANILLA"/>
-            
+
+            <Label x:Name="Address"></Label>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -8,8 +8,8 @@ namespace encuesta
 		public MainPage()
 		{
             InitializeComponent();
-            var database = new Database("Encuesta"); // Creates (if does not exist) a database named People
-            database.CreateTable<Usuario>(); // Creates (if does not exist) a table of type Person
+            var database = new Database("Encuesta"); // Creates (if does not exist) a database named Encuesta
+            var script = new InitialScript(database);
         }
    
            async void testBTN(object sender, System.EventArgs e) {

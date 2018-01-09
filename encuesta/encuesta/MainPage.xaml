@@ -41,7 +41,8 @@
                RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=1}"></Image>
 
         <!-- PRUEBA DE LAYAUTS -->
-        <Button Text="test layouts" Clicked="testBTN"/>
+         
+            <Button Text="test layouts" Clicked="testBTN"/> 
     </RelativeLayout>
 
 
