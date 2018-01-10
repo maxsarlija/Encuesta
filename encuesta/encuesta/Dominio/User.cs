@@ -4,6 +4,8 @@ namespace encuesta
 {
     public class User : BaseItem
     {
+        public User() { }
+
         public User(string _username, string _password)
         {
             Username = _username;

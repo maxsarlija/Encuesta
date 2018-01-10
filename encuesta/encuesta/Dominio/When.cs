@@ -4,6 +4,8 @@ namespace encuesta
 {
     public class When : BaseItem
     {
+        public When() { }
+
         public When(string _category, string _description)
         {
             Category = _category;

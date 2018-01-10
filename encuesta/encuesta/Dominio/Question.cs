@@ -4,6 +4,8 @@ namespace encuesta
 {
     public class Question : BaseItem
     {
+        public Question() { }
+
         public Question(string _details, string _when, int _score)
         {
             Details = _details;

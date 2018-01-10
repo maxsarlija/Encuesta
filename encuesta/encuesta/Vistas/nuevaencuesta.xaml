@@ -17,6 +17,14 @@
             <!--Nueva Encuesta DINAMINA DE LLENADO DE PLANILLA -->
             <Button Text="DINAMICA DE LLENADO DE LA PLANILLA"/>
 
+            <!-- Clientes -->
+            <Button x:Name="BtnClientes" Text="Clientes" Clicked="BtnClientes_OnClick"/>
+
+            <!-- Clientes -->
+            <Button x:Name="BtnBorrarDatos" Text="BORRAR DATOS" Clicked="BtnBorrarDatos_OnClick" BackgroundColor="Red" TextColor="White"/>
+
+
+
             <Label x:Name="Address"></Label>
 
         </StackLayout>
