@@ -9,26 +9,26 @@ namespace encuesta
         public Question(string _details, string _when, int _score)
         {
             Details = _details;
-            When = _when;
+            Moment = _when;
             Score = _score;
         }
 
         public Question(string _details, Moment _when, int _score)
         {
             Details = _details;
-            _when = this._when;
+            _when = this._moment;
             Score = _score;
         }
 
         public string Details { get; set; }
-        public string When { get; set; }
+        public string Moment { get; set; }
         public int Score { get; set; }
 
-        private Moment _when;
+        private Moment _moment;
 
         public override string ToString()
         {
-            return $"{ID}, {Details}, {When}, {Score}";
+            return $"{ID}, {Details}, {Moment}, {Score}";
         }
     }
 }

@@ -10,10 +10,15 @@ namespace encuesta
     {
         public InitialScript(Database database)
         {
-            database.CreateTable<User>(); // Creates (if does not exist) a table for Users.
-            database.CreateTable<Customer>(); // Creates (if does not exist) a table for Customers.
-            database.CreateTable<Moment>(); // Creates (if does not exist) a table for Moment.
-            database.CreateTable<Question>(); // Creates (if does not exist) a table for Questions.
+            database.CreateTable<Answer>();
+            database.CreateTable<Customer>();
+            database.CreateTable<CustomerAnswer>();
+            database.CreateTable<Moment>();
+            database.CreateTable<Question>();
+            database.CreateTable<QuestionOption>();
+            database.CreateTable<Survey>();
+            database.CreateTable<SurveyQuestion>();
+            database.CreateTable<User>();
 
             // Insert username.
             if (database.Query<User>("SELECT * FROM User").FirstOrDefault() == null)
@@ -61,6 +66,25 @@ namespace encuesta
                 database.SaveItem(new Question("Identificar inconvenientes pendientes en la ruta (cambio de mercadería, NC pendiente, etc)", "MAT", 19));
                 database.SaveItem(new Question("Saber la ruta del día + Ranking de Clientes (Vol o Fact)", "MAT", 25));
             }
+
+            // Surveys.
+            if (database.Query<Survey>("SELECT * FROM Survey").FirstOrDefault() == null)
+            {
+                // Create first survey.
+                database.SaveItem(new Survey("Encuesta general"));
+
+                Survey survey = database.Query<Survey>("SELECT * FROM Survey WHERE Name='Encuesta general'").FirstOrDefault();
+                List<Question> questions = database.Query<Question>("SELECT * FROM Question ORDER BY Moment, ID").ToList();
+                int i = 0;
+
+                foreach (var q in questions)
+                {
+                    database.SaveItem(new SurveyQuestion(survey.ID, q.ID, i++));
+                }
+
+            }
+
+
 
         }
     }

@@ -4,7 +4,7 @@
              x:Class="encuesta.Vistas.CustomersList"
              Title="Clientes">
     <ContentPage.Content>
-        
+
         <StackLayout>
             <ListView x:Name="CustomersListView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
                       ItemSelected="BtnCliente_OnClickItem">

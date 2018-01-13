@@ -24,20 +24,8 @@ namespace encuesta.Vistas
 
         async void BtnCliente_OnClickItem(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushAsync(new Vistas.CustomerProfile((Customer) e.SelectedItem));
+            await Navigation.PushAsync(new Vistas.CustomerProfile((Customer)e.SelectedItem));
 
-        }
-
-        // Button start Surveys.
-        async void BtnStartSurvey_OnClick(object sender, System.EventArgs e)
-        {
-            await Navigation.PushAsync(new Vistas.CustomersList());
-        }
-
-        // Button view Surveys.
-        async void BtnViewSurveys_OnClick(object sender, System.EventArgs e)
-        {
-            await Navigation.PushAsync(new Vistas.CustomersList());
         }
 
 

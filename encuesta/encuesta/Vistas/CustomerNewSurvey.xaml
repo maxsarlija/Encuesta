@@ -6,33 +6,19 @@
     <ContentPage.Content>
 
         <StackLayout VerticalOptions="FillAndExpand">
-            <Grid VerticalOptions="FillAndExpand">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <ListView x:Name="SurveysListView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
+                      ItemSelected="BtnSurvey_OnClickItem">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Padding="15, 0" VerticalOptions="FillAndExpand">
+                                <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-                <!--Title-->
-                <Label x:Name="SurveyTitle" Text="Title" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" FontAttributes="Bold" TextColor="Black"
-                       FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"></Label>
-
-                <!--Question-->
-                <Label x:Name="SurveyQuestion" Text="Question" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2" Grid.Column="0"
-                       FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"></Label>
-
-                <!--Buttons-->
-                <Button x:Name="BtnNo" Grid.Row="4" Grid.Column="0" BackgroundColor="Red" Text="No" TextColor="White"
-                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Button>
-                <Button x:Name="BtnYes" Grid.Row="4" Grid.Column="1" BackgroundColor="Green" Text="Sí" TextColor="White"
-                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Button>
-            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

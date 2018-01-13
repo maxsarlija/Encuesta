@@ -24,12 +24,12 @@ namespace encuesta.Vistas
 
         async void BtnViewSurveys_OnClick(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new Vistas.CustomerSurveys());
+            await Navigation.PushAsync(new Vistas.CustomerSurveys(SelectedCustomer));
         }
 
         async void BtnStartSurvey_OnClick(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new Vistas.CustomerNewSurvey());
+            await Navigation.PushAsync(new Vistas.CustomerNewSurvey(SelectedCustomer));
         }
 
 
