@@ -2,11 +2,11 @@
 using System;
 namespace encuesta
 {
-    public class When : BaseItem
+    public class Moment : BaseItem
     {
-        public When() { }
+        public Moment() { }
 
-        public When(string _category, string _description)
+        public Moment(string _category, string _description)
         {
             Category = _category;
             Description = _description;

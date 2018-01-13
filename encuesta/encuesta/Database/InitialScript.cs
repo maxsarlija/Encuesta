@@ -12,7 +12,7 @@ namespace encuesta
         {
             database.CreateTable<User>(); // Creates (if does not exist) a table for Users.
             database.CreateTable<Customer>(); // Creates (if does not exist) a table for Customers.
-            database.CreateTable<When>(); // Creates (if does not exist) a table for When.
+            database.CreateTable<Moment>(); // Creates (if does not exist) a table for Moment.
             database.CreateTable<Question>(); // Creates (if does not exist) a table for Questions.
 
             // Insert username.
@@ -29,24 +29,24 @@ namespace encuesta
                 database.SaveItem(new Customer("Restaurant", "Mendoza 1001"));
             }
 
-            // When.
-            if (database.Query<Customer>("SELECT * FROM 'When' ").FirstOrDefault() == null)
+            // Moment.
+            if (database.Query<Customer>("SELECT * FROM 'Moment' ").FirstOrDefault() == null)
             {
-                database.SaveItem(new When("MAT", "Matinal Diaria"));
-                database.SaveItem(new When("AIC", "Antes de ingresar al cliente"));
-                database.SaveItem(new When("PDV", "Revisión Categorización del PDV"));
-                database.SaveItem(new When("STK", "Revisión stock en depósito"));
-                database.SaveItem(new When("GLD", "Negociación Plan Gold"));
-                database.SaveItem(new When("SLD", "Saludo"));
-                database.SaveItem(new When("RUP", "Repasar último pedido"));
-                database.SaveItem(new When("CAT", "Categorías"));
-                database.SaveItem(new When("OCA", "Ofertas, combos, acciones"));
-                database.SaveItem(new When("OPO", "Oportunidades"));
-                database.SaveItem(new When("LAN", "Lanzamientos / Incorporaciones"));
-                database.SaveItem(new When("ACT", "Actualizaciones de precios"));
-                database.SaveItem(new When("CDV", "Cierre de ventas"));
-                database.SaveItem(new When("OBJ", "Registro y evaluación del día. Objetivos propuestos Vs Resultados. Ver focos para próximas visitas. (Semanal)"));
-                database.SaveItem(new When("VOL", "Revisar avance propio de volumen (Diario)"));
+                database.SaveItem(new Moment("MAT", "Matinal Diaria"));
+                database.SaveItem(new Moment("AIC", "Antes de ingresar al cliente"));
+                database.SaveItem(new Moment("PDV", "Revisión Categorización del PDV"));
+                database.SaveItem(new Moment("STK", "Revisión stock en depósito"));
+                database.SaveItem(new Moment("GLD", "Negociación Plan Gold"));
+                database.SaveItem(new Moment("SLD", "Saludo"));
+                database.SaveItem(new Moment("RUP", "Repasar último pedido"));
+                database.SaveItem(new Moment("CAT", "Categorías"));
+                database.SaveItem(new Moment("OCA", "Ofertas, combos, acciones"));
+                database.SaveItem(new Moment("OPO", "Oportunidades"));
+                database.SaveItem(new Moment("LAN", "Lanzamientos / Incorporaciones"));
+                database.SaveItem(new Moment("ACT", "Actualizaciones de precios"));
+                database.SaveItem(new Moment("CDV", "Cierre de ventas"));
+                database.SaveItem(new Moment("OBJ", "Registro y evaluación del día. Objetivos propuestos Vs Resultados. Ver focos para próximas visitas. (Semanal)"));
+                database.SaveItem(new Moment("VOL", "Revisar avance propio de volumen (Diario)"));
             }
 
             // Insert questions.

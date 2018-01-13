@@ -13,7 +13,7 @@ namespace encuesta
             Score = _score;
         }
 
-        public Question(string _details, When _when, int _score)
+        public Question(string _details, Moment _when, int _score)
         {
             Details = _details;
             _when = this._when;
@@ -24,7 +24,7 @@ namespace encuesta
         public string When { get; set; }
         public int Score { get; set; }
 
-        private When _when;
+        private Moment _when;
 
         public override string ToString()
         {

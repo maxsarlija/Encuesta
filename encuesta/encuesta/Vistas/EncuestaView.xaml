@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="encuesta.Vistas.EncuestaView">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--Title-->
+                <Label x:Name="SurveyTitle" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0"
+                       FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+
+                <!--Question-->
+                <Label x:Name="SurveyQuestion" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2" Grid.Column="0"
+                       HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+
+                <!--Buttons-->
+                <Button x:Name="BtnNo" Grid.Row="4" Grid.Column="0" BackgroundColor="Red"
+                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Button>
+                <Button x:Name="BtnYes" Grid.Row="4" Grid.Column="1" BackgroundColor="Green"
+                        HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

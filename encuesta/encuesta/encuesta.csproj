@@ -16,6 +16,15 @@
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Vistas\CustomerNewSurvey.xaml.cs">
+      <DependentUpon>CustomerNewSurvey.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Vistas\CustomerSurveys.xaml.cs">
+      <DependentUpon>CustomerSurveys.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Vistas\EncuestaView.xaml.cs">
+      <DependentUpon>EncuestaView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Vistas\CustomersList.xaml.cs">
       <DependentUpon>CustomersList.xaml</DependentUpon>
     </Compile>
@@ -47,13 +56,7 @@
     <EmbeddedResource Update="Vistas\evolucionEncuestas\evolucionVisita.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vistas\inicio.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Vistas\nuevaencuesta.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Vistas\verEncuestas.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

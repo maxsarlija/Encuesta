@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="encuesta.Vistas.CustomerProfile">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="5">
+            <!--Details-->
+            <StackLayout Orientation="Horizontal" Padding="5">
+                <Label Text="Nombre: " VerticalOptions="CenterAndExpand" FontSize="Large"/>
+                <Label x:Name="CustomerName" VerticalOptions="CenterAndExpand" FontSize="Large"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Padding="5">
+                <Label Text="Dirección: " VerticalOptions="CenterAndExpand" FontSize="Large"/>
+                <Label x:Name="CustomerAddress" VerticalOptions="CenterAndExpand" FontSize="Large"/>
+            </StackLayout>
+
+            <!-- Buttons-->
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                    Text="Iniciar Encuesta" Clicked="BtnStartSurvey_OnClick"></Button>
+
+                <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
+                        Text="Ver Encuestas" Clicked="BtnViewSurveys_OnClick"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

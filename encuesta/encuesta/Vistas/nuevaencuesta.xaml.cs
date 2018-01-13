@@ -30,10 +30,14 @@ namespace encuesta.Vistas
 
         void BtnBorrarDatos_OnClick(object sender, System.EventArgs e)
         {
-            _database.DeleteAll<User>();
-            _database.DeleteAll<Customer>();
-            _database.DeleteAll<Question>();
-            _database.DeleteAll<When>();
+            _database.DropTable<User>();
+            _database.DropTable<Customer>();
+            _database.DropTable<Question>();
+            _database.DropTable<Moment>();
+            _database.DropTable<Answer>();
+            _database.DropTable<Survey>();
+
+            var script = new InitialScript(_database);
         }
     }
 }

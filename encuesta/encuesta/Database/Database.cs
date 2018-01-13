@@ -33,6 +33,14 @@ namespace encuesta
             }
         }
 
+        public void DropTable<T>()
+        {
+            lock (locker)
+            {
+                connection.DropTable<T>();
+            }
+        }
+
         public long GetSize()
         {
             return SQLite.GetSize(DatabaseName);

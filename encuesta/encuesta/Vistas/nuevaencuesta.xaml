@@ -21,11 +21,8 @@
             <Button x:Name="BtnClientes" Text="Clientes" Clicked="BtnClientes_OnClick"/>
 
             <!-- Clientes -->
-            <Button x:Name="BtnBorrarDatos" Text="BORRAR DATOS" Clicked="BtnBorrarDatos_OnClick" BackgroundColor="Red" TextColor="White"/>
+            <Button x:Name="BtnBorrarDatos" Text="RESETEAR DATOS" Clicked="BtnBorrarDatos_OnClick" BackgroundColor="Red" TextColor="White"/>
 
-
-
-            <Label x:Name="Address"></Label>
 
         </StackLayout>
     </ContentPage.Content>
