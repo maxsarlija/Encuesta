@@ -7,13 +7,23 @@
 
         <StackLayout VerticalOptions="FillAndExpand">
             <ListView x:Name="SurveysListView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                      ItemSelected="BtnSurvey_OnClickItem">
+                      ItemSelected="BtnSurvey_OnClickItem" RowHeight="80">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Vertical" Padding="15, 0" VerticalOptions="FillAndExpand">
-                                <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold" VerticalOptions="CenterAndExpand" />
-                            </StackLayout>
+                            <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Name}" FontSize="Large" VerticalOptions="CenterAndExpand" 
+                                       Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Grid.ColumnSpan="1" Grid.RowSpan="1"/>
+                            </Grid>
+
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

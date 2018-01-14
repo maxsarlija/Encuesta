@@ -9,7 +9,7 @@ namespace encuesta
         public Answer(int _customerAnswerID, int _questionID)
         {
             CustomerAnswerID = _customerAnswerID;
-            QuestionID = _customerAnswerID;
+            QuestionID = _questionID;
         }
 
         [Indexed]

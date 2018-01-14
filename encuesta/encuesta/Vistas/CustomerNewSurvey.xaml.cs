@@ -29,13 +29,14 @@ namespace encuesta.Vistas
             Survey _selectedSurvey = (Survey)e.SelectedItem;
             DB.SaveItem(new CustomerAnswer(SelectedCustomer.ID, _selectedSurvey.ID));
 
-            var _customerAnswer = DB.Query<CustomerAnswer>("SELECT * FROM CustomerAnswer ORDER BY ID DESC LIMIT 1").FirstOrDefault();
-            var _surveyQuestions = DB.Query<SurveyQuestion>("SELECT * FROM SurveyQuestion ORDER BY QuestionNumber");
+            var _customerAnswer = DB.Query<CustomerAnswer>("SELECT * FROM CustomerAnswer WHERE CustomerID = ? ORDER BY ID DESC LIMIT 1", SelectedCustomer.ID).FirstOrDefault();
+            var _surveyQuestions = DB.Query<SurveyQuestion>("SELECT * FROM SurveyQuestion WHERE SurveyID = ? ORDER BY QuestionNumber", _selectedSurvey.ID);
 
 
             foreach (var sq in _surveyQuestions)
             {
-                DB.SaveItem(new Answer(_customerAnswer.ID, sq.ID));
+                var _answer = new Answer(_customerAnswer.ID, sq.QuestionID);
+                DB.SaveItem(_answer);
             }
             
             // PASAR CURRENT INDEX A LA VISTA

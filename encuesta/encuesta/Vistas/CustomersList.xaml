@@ -7,14 +7,25 @@
 
         <StackLayout>
             <ListView x:Name="CustomersListView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"
-                      ItemSelected="BtnCliente_OnClickItem">
+                      ItemSelected="BtnCliente_OnClickItem" RowHeight="80">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Vertical" Padding="15, 0" VerticalOptions="FillAndExpand">
-                                <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="CenterAndExpand" />
-                                <Label Text="{Binding Address}" FontSize="Micro" VerticalOptions="CenterAndExpand"/>
-                            </StackLayout>
+                            <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Name}" FontSize="Medium" VerticalOptions="CenterAndExpand" 
+                                       Grid.Row="0" Grid.Column="0" FontAttributes="Bold"/>
+
+                                <Label Text="{Binding Address}" FontSize="Small" VerticalOptions="CenterAndExpand" 
+                                       Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="0" />
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -13,6 +13,8 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -34,6 +36,17 @@
                 <Button x:Name="BtnYes" Grid.Row="6" Grid.Column="1" BackgroundColor="Green" Text="Sí" TextColor="White"
                         HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                         Clicked="BtnYes_OnClick"></Button>
+
+                <StackLayout HorizontalOptions="FillAndExpand" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="7" Grid.RowSpan="1"
+                             VerticalOptions="CenterAndExpand" x:Name="QuestionWasAnsweredContainer"
+                             BackgroundColor="Orange">
+
+                    <Label x:Name="QuestionWasAnswered" TextColor="White" FontAttributes="Bold"></Label>
+
+                </StackLayout>
+
+                <Button x:Name="BtnNext" Text="Siguiente" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                        Clicked="BtnNext_OnClick" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="9" ></Button>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

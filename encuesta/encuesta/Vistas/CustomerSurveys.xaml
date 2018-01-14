@@ -6,7 +6,8 @@
     <ContentPage.Content>
         
         <StackLayout>
-            <ListView x:Name="CustomerAnswers" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowHeight="80">
+            <ListView x:Name="CustomerAnswers" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowHeight="80"
+                      ItemSelected="BtnSurvey_OnClickItem" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell x:Name="CustomerAnswerViewCell">
@@ -28,7 +29,7 @@
                                        x:Name="CustomerAnswerStatus" TextColor="{Binding StatusColor}" FontAttributes="Bold"/>
                                 <Label Text="{Binding CustomerAnswer.DateCompleted}" FontSize="Small" VerticalOptions="CenterAndExpand" 
                                        Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="0" />
-                            </Grid>                            
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
