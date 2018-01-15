@@ -43,7 +43,7 @@ namespace encuesta
                 }
                 else
                 {
-                    Navigation.PushAsync(new Vistas.nuevaencuesta());
+                    Navigation.PushAsync(new Vistas.inicio());
                 }
             }
             
