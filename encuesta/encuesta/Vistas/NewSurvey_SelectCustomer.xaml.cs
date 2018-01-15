@@ -1,16 +1,16 @@
-﻿
+﻿using System.Linq;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace encuesta.Vistas
 {
-    public partial class CustomersList : ContentPage
+    public partial class NewSurvey_SelectCustomer : ContentPage
     {
         private List<Customer> _customers;
 
 
-        public CustomersList()
+        public NewSurvey_SelectCustomer()
         {
             InitializeComponent();
 
@@ -27,9 +27,8 @@ namespace encuesta.Vistas
             // Click on Customer will lead to his surveys.
             // await Navigation.PushAsync(new Vistas.CustomerProfile((Customer)e.SelectedItem));
 
-            await Navigation.PushAsync(new Vistas.CustomerSurveys((Customer) e.SelectedItem));
+            await Navigation.PushAsync(new Vistas.NewSurvey_SelectSurvey((Customer)e.SelectedItem));
         }
-
 
 
     }

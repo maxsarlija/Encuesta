@@ -56,11 +56,20 @@ namespace encuesta.Vistas
         async void BtnSurvey_OnClickItem(object sender, SelectedItemChangedEventArgs e)
         {
             CustomerSurvey _selectedSurvey = (CustomerSurvey)e.SelectedItem;
-            
-            // PASAR CURRENT INDEX A LA VISTA
-            int currentIndex = 0;
 
-            await Navigation.PushAsync(new Vistas.EncuestaView(SelectedCustomer, _selectedSurvey.Survey, _selectedSurvey.CustomerAnswer, currentIndex));
+            await Navigation.PushAsync(new Vistas.CustomerSurveyAnswers(_selectedSurvey.CustomerAnswer, _selectedSurvey.Survey, _selectedSurvey.Customer));
+
+
+            // ****************************************
+            // USAR ESTO SOLAMENTE CUANDO QUEREMOS LEVANTAR LA PRIMERA PREGUNTA Y SEGUIR CICLO.
+            // ****************************************
+
+            // PASAR CURRENT INDEX A LA VISTA
+            // int currentIndex = 0;
+
+            // await Navigation.PushAsync(new Vistas.EncuestaView(SelectedCustomer, _selectedSurvey.Survey, _selectedSurvey.CustomerAnswer, currentIndex));
+
+
         }
 
     }

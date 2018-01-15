@@ -6,20 +6,15 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
 
-            <!--Nueva Encuesta TIPO WOS -->
-            <Button Text="WOS"/>
-
-            <!--Nueva Encuesta TIPO COACHING -->
-            <Button Text="COACHING"/>
-
-            <!--Nueva Encuesta TIPO COACHING WOS -->
-            <Button Text="PLANILLA DE COACHING WOS"/>
-
-            <!--Nueva Encuesta DINAMINA DE LLENADO DE PLANILLA -->
-            <Button Text="DINAMICA DE LLENADO DE LA PLANILLA"/>
 
             <!-- Clientes -->
-            <Button x:Name="BtnClientes" Text="Clientes" Clicked="BtnClientes_OnClick"/>
+            <Button x:Name="BtnNewSurvey" Text="Nueva Encuesta" Clicked="BtnNewSurvey_OnClick"/>
+
+            <!-- Clientes -->
+            <Button x:Name="BtnViewSurveys" Text="Ver Encuestas" Clicked="BtnViewSurveys_OnClick"/>
+            
+            <!-- Clientes -->
+            <Button x:Name="BtnTasks" Text="Tareas" Clicked="BtnTasks_OnClick"/>
 
             <!-- Clientes -->
             <Button x:Name="BtnBorrarDatos" Text="RESETEAR DATOS" Clicked="BtnBorrarDatos_OnClick" BackgroundColor="Red" TextColor="White"/>

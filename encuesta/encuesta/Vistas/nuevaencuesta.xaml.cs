@@ -21,12 +21,23 @@ namespace encuesta.Vistas
         }
 
 
-        async void BtnClientes_OnClick(object sender, System.EventArgs e)
+        async void BtnNewSurvey_OnClick(object sender, System.EventArgs e)
         {
 
-            await Navigation.PushAsync(new Vistas.CustomersList());
+            await Navigation.PushAsync(new Vistas.NewSurvey_SelectCustomer());
 
         }
+
+        async void BtnViewSurveys_OnClick(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new Vistas.CustomersList());
+        }
+
+        async void BtnTasks_OnClick(object sender, System.EventArgs e)
+        {
+            
+        }
+
 
         void BtnBorrarDatos_OnClick(object sender, System.EventArgs e)
         {

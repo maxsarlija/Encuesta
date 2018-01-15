@@ -5,13 +5,13 @@ using Xamarin.Forms.Xaml;
 
 namespace encuesta.Vistas
 {
-    public partial class CustomerNewSurvey : ContentPage
+    public partial class NewSurvey_SelectSurvey : ContentPage
     {
         public Customer SelectedCustomer { get; set; }
         protected Database DB { get; set; }
 
 
-        public CustomerNewSurvey(Customer _customer)
+        public NewSurvey_SelectSurvey(Customer _customer)
         {
             InitializeComponent();
 

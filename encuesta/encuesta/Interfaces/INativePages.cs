@@ -4,7 +4,8 @@ using System.Text;
 
 namespace encuesta.Interfaces
 {
-    class INativePages
+    public interface INativePages
     {
+        void StartActivityInAndroid();
     }
 }

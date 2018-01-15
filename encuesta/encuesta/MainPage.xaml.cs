@@ -22,7 +22,7 @@ namespace encuesta
         async void testBTN(object sender, System.EventArgs e)
         {
 
-            await Navigation.PushAsync(new Vistas.nuevaencuesta());
+            App.Current.MainPage = new NavigationPage(new encuesta.Vistas.nuevaencuesta());
 
         }
 
@@ -43,7 +43,7 @@ namespace encuesta
                 }
                 else
                 {
-                    Navigation.PushAsync(new Vistas.nuevaencuesta());
+                    App.Current.MainPage = new NavigationPage(new encuesta.Vistas.nuevaencuesta());
                 }
             }
             

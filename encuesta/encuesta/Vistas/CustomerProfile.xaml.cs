@@ -29,7 +29,7 @@ namespace encuesta.Vistas
 
         async void BtnStartSurvey_OnClick(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new Vistas.CustomerNewSurvey(SelectedCustomer));
+            await Navigation.PushAsync(new Vistas.NewSurvey_SelectSurvey(SelectedCustomer));
         }
 
 

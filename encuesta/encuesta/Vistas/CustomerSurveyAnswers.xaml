@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="encuesta.Vistas.CustomerSurveyAnswers">
+    <ContentPage.Content>
+        
+        <StackLayout>
+            <ListView x:Name="CustomerAnswers" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowHeight="80">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell x:Name="CustomerAnswerViewCell">
+
+                            <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Text="{Binding Question.ShortDescription}" FontSize="Medium" VerticalOptions="CenterAndExpand" 
+                                       Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontAttributes="Bold"/>
+                                <Label Text="{Binding Answer.Option}" FontSize="Small" VerticalOptions="CenterAndExpand" 
+                                       Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" 
+                                       x:Name="CustomerAnswerStatus" TextColor="{Binding StatusColor}" FontAttributes="Bold"/>
+                                <Label Text="{Binding Question.Details}" FontSize="Small" VerticalOptions="CenterAndExpand" 
+                                       Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" LineBreakMode="TailTruncation"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

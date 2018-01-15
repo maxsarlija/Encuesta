@@ -10,14 +10,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Vistas\CustomerNewSurvey.xaml.cs">
-      <DependentUpon>CustomerNewSurvey.xaml</DependentUpon>
+    <Compile Update="Vistas\NewSurvey_SelectCustomer.xaml.cs">
+      <DependentUpon>NewSurvey_SelectCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Vistas\NewSurvey_SelectSurvey.xaml.cs">
+      <DependentUpon>NewSurvey_SelectSurvey.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Vistas\CustomerSurveyAnswers.xaml.cs">
+      <DependentUpon>CustomerSurveyAnswers.xaml</DependentUpon>
     </Compile>
     <Compile Update="Vistas\CustomerSurveys.xaml.cs">
       <DependentUpon>CustomerSurveys.xaml</DependentUpon>

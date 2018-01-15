@@ -96,7 +96,8 @@ namespace encuesta.Vistas
                 CurrentCustomerAnswer.DateCompleted = DateTime.Now;
                 CurrentCustomerAnswer.Status = SurveyStatus.COMPLETED;
                 DB.SaveItem(CurrentCustomerAnswer);
-                await Navigation.PushAsync(new Vistas.CustomerProfile(SelectedCustomer));
+                //await Navigation.PushAsync(new Vistas.CustomerProfile(SelectedCustomer));
+                await Navigation.PopToRootAsync(true);
             }
             else
             // If it's different, we go to the next question.

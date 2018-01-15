@@ -59,12 +59,12 @@ namespace encuesta
             // Category: MAT.
             if (database.Query<Customer>("SELECT * FROM Question").FirstOrDefault() == null)
             {
-                database.SaveItem(new Question("Revisar avance propio de volúmenes y objetivos de Trade", "MAT", 25));
-                database.SaveItem(new Question("Reporte de porcentaje de rechazos por cajas y por clientes. Reporte de entregas logística.", "MAT", 19));
-                database.SaveItem(new Question("Incorporaciones de productos y discontinuos (cuando es necesario)", "MAT", 19));
-                database.SaveItem(new Question("Revisar listas de precios:  Acciones del mes, combos, etc. (Cuando es necesario si hay cambios)", "MAT", 19));
-                database.SaveItem(new Question("Identificar inconvenientes pendientes en la ruta (cambio de mercadería, NC pendiente, etc)", "MAT", 19));
-                database.SaveItem(new Question("Saber la ruta del día + Ranking de Clientes (Vol o Fact)", "MAT", 25));
+                database.SaveItem(new Question("Revisar avance propio de volúmenes y objetivos de Trade", "MAT", 25, "Volúmenes / Trade"));
+                database.SaveItem(new Question("Reporte de porcentaje de rechazos por cajas y por clientes. Reporte de entregas logística.", "MAT", 19, "Rechazos / Entregas"));
+                database.SaveItem(new Question("Incorporaciones de productos y discontinuos (cuando es necesario)", "MAT", 19, "Productos y discontinuos"));
+                database.SaveItem(new Question("Revisar listas de precios:  Acciones del mes, combos, etc. (Cuando es necesario si hay cambios)", "MAT", 19, "Listas de precios"));
+                database.SaveItem(new Question("Identificar inconvenientes pendientes en la ruta (cambio de mercadería, NC pendiente, etc)", "MAT", 19, "Inconvenientes en la ruta"));
+                database.SaveItem(new Question("Saber la ruta del día + Ranking de Clientes (Vol o Fact)", "MAT", 25, "Ruta del día / Ranking clientes"));
             }
 
             // Surveys.

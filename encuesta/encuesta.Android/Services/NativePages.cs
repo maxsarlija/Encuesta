@@ -10,17 +10,22 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using encuesta.Droid.Services;
+using encuesta.Interfaces;
 using Xamarin.Forms;
 
 [assembly: Xamarin.Forms.Dependency(typeof(NativePages))]
 namespace encuesta.Droid.Services
 {
-    public class NativePages 
+    public class NativePages : INativePages
     {
-        public NativePages()
+
+
+        public void StartActivityInAndroid()
         {
+            
+            Android.App.Application.Context.StartActivity(typeof(encuesta.Droid.MainMenu));
         }
 
-        
     }
+
 }
