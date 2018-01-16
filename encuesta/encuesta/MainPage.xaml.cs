@@ -19,13 +19,6 @@ namespace encuesta
 
         }
 
-        async void testBTN(object sender, System.EventArgs e)
-        {
-
-            App.Current.MainPage = new NavigationPage(new encuesta.Vistas.nuevaencuesta());
-
-        }
-
         void OnTapGestureRecognizerTapped(object sender, EventArgs args)
         {
             if (EntryUsername.Text == null || EntryPassword.Text == null)

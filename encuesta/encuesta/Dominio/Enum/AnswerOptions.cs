@@ -6,7 +6,8 @@ namespace encuesta.Dominio.Enum
 {
     public class AnswerOptions
     {
-        public static string YES = "Sí";
-        public static string NO = "No";
+        public const string YES = "Sí";
+        public const string NO = "No";
+        public const string PENDING = "Pendiente";
     }
 }

@@ -26,10 +26,12 @@ namespace encuesta.Vistas
         {
             // Click on Customer will lead to his surveys.
             // await Navigation.PushAsync(new Vistas.CustomerProfile((Customer)e.SelectedItem));
+            var _selectedCustomer = (Customer) e.SelectedItem;
 
-            await Navigation.PushAsync(new Vistas.NewSurvey_SelectSurvey((Customer)e.SelectedItem));
+            await Navigation.PushAsync(new Vistas.NewSurvey_SelectSurvey(_selectedCustomer));
         }
 
+        
 
     }
 }

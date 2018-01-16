@@ -23,7 +23,6 @@ namespace encuesta.Droid.Services
         public void StartActivityInAndroid()
         {
             
-            Android.App.Application.Context.StartActivity(typeof(encuesta.Droid.MainMenu));
         }
 
     }

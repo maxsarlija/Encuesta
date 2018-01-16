@@ -35,7 +35,7 @@ namespace encuesta.Vistas
 
         async void BtnTasks_OnClick(object sender, System.EventArgs e)
         {
-            
+            await Navigation.PushAsync(new Vistas.Tasks());
         }
 
 

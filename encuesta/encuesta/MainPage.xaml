@@ -37,9 +37,6 @@
             </Image.GestureRecognizers>
         </Image>
 
-        <!-- PRUEBA DE LAYAUTS -->
-         
-            <Button Text="test layouts" Clicked="testBTN"/> 
     </StackLayout>
 
 

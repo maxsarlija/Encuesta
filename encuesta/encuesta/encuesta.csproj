@@ -10,17 +10,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="MainMenu.xaml.cs">
-      <DependentUpon>MainMenu.xaml</DependentUpon>
-    </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Vistas\NewSurvey_Questions.xaml.cs">
+      <DependentUpon>NewSurvey_Questions.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Vistas\NewSurvey_SelectCustomer.xaml.cs">
       <DependentUpon>NewSurvey_SelectCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Vistas\Tasks.xaml.cs">
+      <DependentUpon>Tasks.xaml</DependentUpon>
     </Compile>
     <Compile Update="Vistas\NewSurvey_SelectSurvey.xaml.cs">
       <DependentUpon>NewSurvey_SelectSurvey.xaml</DependentUpon>
@@ -30,9 +33,6 @@
     </Compile>
     <Compile Update="Vistas\CustomerSurveys.xaml.cs">
       <DependentUpon>CustomerSurveys.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Vistas\EncuestaView.xaml.cs">
-      <DependentUpon>EncuestaView.xaml</DependentUpon>
     </Compile>
     <Compile Update="Vistas\CustomersList.xaml.cs">
       <DependentUpon>CustomersList.xaml</DependentUpon>
@@ -63,9 +63,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Vistas\evolucionEncuestas\evolucionVisita.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Vistas\inicio.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Vistas\nuevaencuesta.xaml">

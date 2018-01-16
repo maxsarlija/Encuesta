@@ -1,4 +1,5 @@
 ﻿
+using encuesta.Dominio.Enum;
 using SQLite;
 using System;
 namespace encuesta
@@ -10,6 +11,7 @@ namespace encuesta
         {
             CustomerAnswerID = _customerAnswerID;
             QuestionID = _questionID;
+            Option = AnswerOptions.PENDING;
         }
 
         [Indexed]

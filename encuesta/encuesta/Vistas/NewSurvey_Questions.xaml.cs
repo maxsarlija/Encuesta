@@ -7,16 +7,14 @@ using System;
 
 namespace encuesta.Vistas
 {
-    public partial class CustomerSurveyAnswers : ContentPage
+    public partial class NewSurvey_Questions : ContentPage
     {
-
-        protected Database DB { get; set; }
         public Customer SelectedCustomer { get; set; }
         public Survey SelectedSurvey { get; set; }
         public CustomerAnswer SelectedCustomerAnswer { get; set; }
+        protected Database DB { get; set; }
 
-
-        public CustomerSurveyAnswers(CustomerAnswer _customerAnswer, Survey _survey, Customer _customer)
+        public NewSurvey_Questions(CustomerAnswer _customerAnswer, Survey _survey, Customer _customer)
         {
             InitializeComponent();
 
@@ -26,7 +24,6 @@ namespace encuesta.Vistas
             SelectedCustomer = _customer;
             SelectedSurvey = _survey;
 
-            Title = SelectedCustomer.Name + " - " + SelectedSurvey.Name;
 
             // Initialize new items source list.
             var _customerSurveyAnswers = new List<CustomerSurveyAnswer>();
@@ -59,31 +56,21 @@ namespace encuesta.Vistas
 
         }
 
-        // *********************************************
-        // USAR ESTO PARA VER PREGUNTAS INDIVIDUALMENTE
-        // *********************************************
-
         async void BtnAnswer_OnClickItem(object sender, SelectedItemChangedEventArgs e)
         {
             CustomerSurveyAnswer _selectedSurveyAnswer = (CustomerSurveyAnswer)e.SelectedItem;
-
-            if (_selectedSurveyAnswer.Answer.Option != AnswerOptions.PENDING)
-                await DisplayAlert("Alerta", "Esta pregunta ha sido respondida.", "OK");
-            else
+            var _answer = _selectedSurveyAnswer.Answer;
+            var action = await DisplayActionSheet(_selectedSurveyAnswer.Question.Details, "Cancelar", null, AnswerOptions.NO, AnswerOptions.YES);
+            switch (action)
             {
-                var _answer = _selectedSurveyAnswer.Answer;
-                var action = await DisplayActionSheet(_selectedSurveyAnswer.Question.Details, "Cancelar", null, AnswerOptions.NO, AnswerOptions.YES);
-                switch (action)
-                {
-                    case AnswerOptions.NO:
-                        SaveAnswer(_selectedSurveyAnswer.Answer, AnswerOptions.NO);
-                        break;
-                    case AnswerOptions.YES:
-                        SaveAnswer(_selectedSurveyAnswer.Answer, AnswerOptions.YES);
-                        break;
-                    default:
-                        break;
-                }
+                case AnswerOptions.NO:
+                    SaveAnswer(_selectedSurveyAnswer.Answer, AnswerOptions.NO);
+                    break;
+                case AnswerOptions.YES:
+                    SaveAnswer(_selectedSurveyAnswer.Answer, AnswerOptions.YES);
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -120,6 +107,18 @@ namespace encuesta.Vistas
                 await Navigation.PopToRootAsync();
             }
 
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var action = await DisplayAlert("Alerta", "Algunas preguntas no han sido contestadas. ¿Desea cerrar la encuesta?", "Finalizar", "Cancelar");
+                if (action)
+                {
+                    await Navigation.PopToRootAsync();
+                }
+            });
+            return true;
         }
 
     }

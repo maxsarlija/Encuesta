@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="encuesta.Vistas.CustomerSurveys"
-             Title="Clientes">
+             x:Class="encuesta.Vistas.NewSurvey_Questions"
+             Title="Encuesta">
     <ContentPage.Content>
-        
+
         <StackLayout>
             <ListView x:Name="CustomerAnswers" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowHeight="80"
-                      ItemSelected="BtnSurvey_OnClickItem" >
+                      ItemSelected="BtnAnswer_OnClickItem">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell x:Name="CustomerAnswerViewCell">
@@ -20,20 +20,24 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Label Text="{Binding Survey.Name}" FontSize="Medium" VerticalOptions="CenterAndExpand" 
-                                       Grid.Row="0" Grid.Column="0" LineBreakMode="TailTruncation" FontAttributes="Bold"/>
-                                <Label Text="{Binding CustomerAnswer.Status}" FontSize="Small" VerticalOptions="CenterAndExpand" 
-                                       Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" HorizontalOptions="EndAndExpand" 
+                                <Label Text="{Binding Question.ShortDescription}" FontSize="Medium" VerticalOptions="CenterAndExpand" 
+                                       Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontAttributes="Bold"/>
+                                <Label Text="{Binding Answer.Option}" FontSize="Small" VerticalOptions="CenterAndExpand" 
+                                       Grid.Row="0" Grid.RowSpan="2" Grid.Column="3" HorizontalOptions="CenterAndExpand" 
                                        x:Name="CustomerAnswerStatus" TextColor="{Binding StatusColor}" FontAttributes="Bold"/>
-                                <Label Text="{Binding Date}" FontSize="Small" VerticalOptions="CenterAndExpand" 
-                                       Grid.Row="1" Grid.ColumnSpan="1" Grid.Column="0" />
+                                <Label Text="{Binding Question.Details}" FontSize="Small" VerticalOptions="CenterAndExpand" 
+                                       Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0" LineBreakMode="TailTruncation"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <Button Text="AGREGAR FOTO" HorizontalOptions="Center"></Button>
 
         </StackLayout>
     </ContentPage.Content>

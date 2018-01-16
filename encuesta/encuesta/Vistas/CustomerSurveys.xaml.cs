@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using encuesta.Dominio.Enum;
+using System;
 
 namespace encuesta.Vistas
 {
@@ -18,9 +19,10 @@ namespace encuesta.Vistas
             InitializeComponent();
 
             DB = new Database("Encuesta");
-
-            SelectedCustomer = _customer;
             
+            SelectedCustomer = _customer;
+            Title = "Encuestas - " + SelectedCustomer.Name;
+
 
             // Initialize new items source list.
             var _customerSurveys = new List<CustomerSurvey>();
@@ -44,12 +46,14 @@ namespace encuesta.Vistas
                 CustomerAnswer = _customerAnswer;
                 Survey = db.Query<Survey>("SELECT * FROM Survey WHERE ID = ?", CustomerAnswer.SurveyID).FirstOrDefault();
                 Customer = db.Query<Customer>("SELECT * FROM Customer WHERE ID = ?", CustomerAnswer.CustomerID).FirstOrDefault();
-                StatusColor = CustomerAnswer.Status == SurveyStatus.COMPLETED ? Color.Green : Color.Orange; 
+                StatusColor = CustomerAnswer.Status == SurveyStatus.COMPLETED ? Color.Green : Color.Orange;
+                Date = _customerAnswer.DateCompleted == DateTime.MinValue ? String.Empty : _customerAnswer.DateCompleted.ToString();
             }
             public CustomerAnswer CustomerAnswer { get; set; }
             public Survey Survey { get; set; }
             public Customer Customer { get; set; }
             public Color StatusColor { get; set; }
+            public string Date { get; set; }
             
         }
 

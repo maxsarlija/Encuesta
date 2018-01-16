@@ -6,7 +6,7 @@ namespace encuesta.Dominio.Enum
 {
     public class SurveyStatus
     {
-        public static string COMPLETED = "Finalizada";
-        public static string PENDING = "Pendiente";
+        public const string COMPLETED = "Finalizada";
+        public const string PENDING = "Pendiente";
     }
 }

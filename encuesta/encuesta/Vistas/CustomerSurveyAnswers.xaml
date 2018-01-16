@@ -5,7 +5,8 @@
     <ContentPage.Content>
         
         <StackLayout>
-            <ListView x:Name="CustomerAnswers" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowHeight="80">
+            <ListView x:Name="CustomerAnswers" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowHeight="80"
+                      ItemSelected="BtnAnswer_OnClickItem">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell x:Name="CustomerAnswerViewCell">

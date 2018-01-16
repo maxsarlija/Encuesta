@@ -17,6 +17,8 @@ namespace encuesta.Vistas
 
             SelectedCustomer = _customer;
 
+            Title = "Encuesta - " + SelectedCustomer.Name;
+
             DB = new Database("Encuesta");
             var _surveys = DB.GetItems<Survey>();
             
@@ -39,10 +41,8 @@ namespace encuesta.Vistas
                 DB.SaveItem(_answer);
             }
             
-            // PASAR CURRENT INDEX A LA VISTA
-            int currentIndex = 0;
+            await Navigation.PushAsync(new Vistas.NewSurvey_Questions(_customerAnswer, _selectedSurvey, SelectedCustomer));
 
-            await Navigation.PushAsync(new Vistas.EncuestaView(SelectedCustomer, _selectedSurvey, _customerAnswer, currentIndex));
         }
 
 
