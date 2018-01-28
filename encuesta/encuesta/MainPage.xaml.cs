@@ -15,8 +15,21 @@ namespace encuesta
             DB = new Database("Encuesta"); // Creates (if does not exist) a database named Encuesta
             var script = new InitialScript(DB);
 
+            EntryUsername.Completed += EntryUsername_Completed;
+            EntryPassword.Completed += EntryPassword_Completed;
+
             LoginButton.GestureRecognizers.Add(new TapGestureRecognizer());
 
+        }
+
+        private void EntryPassword_Completed(object sender, EventArgs e)
+        {
+            OnTapGestureRecognizerTapped(sender, e);
+        }
+
+        private void EntryUsername_Completed(object sender, EventArgs e)
+        {
+            EntryPassword.Focus();
         }
 
         void OnTapGestureRecognizerTapped(object sender, EventArgs args)

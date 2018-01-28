@@ -38,6 +38,13 @@ namespace encuesta.Vistas
             await Navigation.PushAsync(new Vistas.Tasks());
         }
 
+        async void BtnSync_OnClick(object sender, System.EventArgs e)
+        {
+            await Navigation.PushAsync(new Vistas.Synchronization());
+        }
+
+
+
 
         void BtnBorrarDatos_OnClick(object sender, System.EventArgs e)
         {

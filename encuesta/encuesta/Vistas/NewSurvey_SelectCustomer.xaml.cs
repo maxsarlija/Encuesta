@@ -24,11 +24,17 @@ namespace encuesta.Vistas
 
         async void BtnCliente_OnClickItem(object sender, SelectedItemChangedEventArgs e)
         {
+            if (e.SelectedItem == null)
+            {
+                return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
+            }
+
             // Click on Customer will lead to his surveys.
-            // await Navigation.PushAsync(new Vistas.CustomerProfile((Customer)e.SelectedItem));
             var _selectedCustomer = (Customer) e.SelectedItem;
 
             await Navigation.PushAsync(new Vistas.NewSurvey_SelectSurvey(_selectedCustomer));
+
+            ((ListView)sender).SelectedItem = null;
         }
 
         

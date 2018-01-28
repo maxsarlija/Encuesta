@@ -6,6 +6,13 @@ namespace encuesta
     {
         public User() { }
 
+        public User(int _id, string _username, string _password)
+        {
+            ID = _id;
+            Username = _username;
+            Password = _password;
+        }
+
         public User(string _username, string _password)
         {
             Username = _username;

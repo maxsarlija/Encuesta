@@ -7,6 +7,14 @@ namespace encuesta
     public class Answer : BaseItem
     {
         public Answer() { }
+        public Answer(int _id, int _customerAnswerID, int _questionID)
+        {
+            ID = _id;
+            CustomerAnswerID = _customerAnswerID;
+            QuestionID = _questionID;
+            Option = AnswerOptions.PENDING;
+        }
+
         public Answer(int _customerAnswerID, int _questionID)
         {
             CustomerAnswerID = _customerAnswerID;

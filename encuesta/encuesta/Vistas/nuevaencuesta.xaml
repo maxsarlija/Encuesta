@@ -12,9 +12,12 @@
 
             <!-- Clientes -->
             <Button x:Name="BtnViewSurveys" Text="Ver Encuestas" Clicked="BtnViewSurveys_OnClick"/>
-            
+
             <!-- Clientes -->
             <Button x:Name="BtnTasks" Text="Tareas" Clicked="BtnTasks_OnClick"/>
+            
+            <!-- Synchronization -->
+            <Button x:Name="BtnSync" Text="Sincronizar" Clicked="BtnSync_OnClick"/>
 
             <!-- Clientes -->
             <Button x:Name="BtnBorrarDatos" Text="RESETEAR DATOS" Clicked="BtnBorrarDatos_OnClick" BackgroundColor="Red" TextColor="White"/>

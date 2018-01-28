@@ -6,6 +6,13 @@ namespace encuesta
     {
         public Moment() { }
 
+        public Moment(int _id, string _category, string _description)
+        {
+            ID = _id;
+            Category = _category;
+            Description = _description;
+        }
+
         public Moment(string _category, string _description)
         {
             Category = _category;

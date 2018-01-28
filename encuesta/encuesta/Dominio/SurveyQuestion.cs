@@ -5,7 +5,15 @@ namespace encuesta
     public class SurveyQuestion : BaseItem
     {
         public SurveyQuestion() { }
-        
+
+        public SurveyQuestion(int _id, int _surveyID, int _questionID, int _questionNumber)
+        {
+            ID = _id;
+            SurveyID = _surveyID;
+            QuestionID = _questionID;
+            QuestionNumber = _questionNumber;
+        }
+
         public SurveyQuestion(int _surveyID, int _questionID, int _questionNumber)
         {
             SurveyID = _surveyID;

@@ -65,6 +65,11 @@ namespace encuesta.Vistas
 
         async void BtnAnswer_OnClickItem(object sender, SelectedItemChangedEventArgs e)
         {
+            if (e.SelectedItem == null)
+            {
+                return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
+            }
+
             CustomerSurveyAnswer _selectedSurveyAnswer = (CustomerSurveyAnswer)e.SelectedItem;
 
             if (_selectedSurveyAnswer.Answer.Option != AnswerOptions.PENDING)
@@ -85,6 +90,8 @@ namespace encuesta.Vistas
                         break;
                 }
             }
+
+            ((ListView)sender).SelectedItem = null;
         }
 
         protected async void SaveAnswer(Answer _answer, string _option)

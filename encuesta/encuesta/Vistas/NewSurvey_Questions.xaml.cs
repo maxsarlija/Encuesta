@@ -58,6 +58,11 @@ namespace encuesta.Vistas
 
         async void BtnAnswer_OnClickItem(object sender, SelectedItemChangedEventArgs e)
         {
+            if (e.SelectedItem == null)
+            {
+                return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
+            }
+
             CustomerSurveyAnswer _selectedSurveyAnswer = (CustomerSurveyAnswer)e.SelectedItem;
             var _answer = _selectedSurveyAnswer.Answer;
             var action = await DisplayActionSheet(_selectedSurveyAnswer.Question.Details, "Cancelar", null, AnswerOptions.NO, AnswerOptions.YES);
@@ -72,6 +77,8 @@ namespace encuesta.Vistas
                 default:
                     break;
             }
+
+            ((ListView)sender).SelectedItem = null;
         }
 
         protected async void SaveAnswer(Answer _answer, string _option)

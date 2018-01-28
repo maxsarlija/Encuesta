@@ -9,6 +9,13 @@ namespace encuesta
 
         }
 
+        public Customer(int _id, string _name, string _address)
+        {
+            ID = _id;
+            Name = _name;
+            Address = _address;
+        }
+
         public Customer(string _name, string _address)
         {
             Name = _name;

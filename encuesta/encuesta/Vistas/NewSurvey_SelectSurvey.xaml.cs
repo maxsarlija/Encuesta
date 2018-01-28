@@ -24,10 +24,14 @@ namespace encuesta.Vistas
             
             SurveysListView.ItemsSource = _surveys;
         }
-        
+
 
         async void BtnSurvey_OnClickItem(object sender, SelectedItemChangedEventArgs e)
         {
+            if (e.SelectedItem == null)
+            {
+                return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
+            }
             Survey _selectedSurvey = (Survey)e.SelectedItem;
             DB.SaveItem(new CustomerAnswer(SelectedCustomer.ID, _selectedSurvey.ID));
 
@@ -40,9 +44,10 @@ namespace encuesta.Vistas
                 var _answer = new Answer(_customerAnswer.ID, sq.QuestionID);
                 DB.SaveItem(_answer);
             }
-            
+
             await Navigation.PushAsync(new Vistas.NewSurvey_Questions(_customerAnswer, _selectedSurvey, SelectedCustomer));
 
+            ((ListView)sender).SelectedItem = null;
         }
 
 
