@@ -2,9 +2,9 @@
 
 namespace encuesta
 {
-    public class BaseItem
+    public class BaseItemAutoIncrement
     {
-        [PrimaryKey]
+        [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
     }
 }

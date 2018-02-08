@@ -50,7 +50,7 @@ namespace encuesta
         {
             lock (locker)
             {
-                var id = ((BaseItem)(object)item).ID;
+                var id = ((BaseItemAutoIncrement)(object)item).ID;
                 if (id != 0)
                 {
                     connection.Update(item);
@@ -60,6 +60,19 @@ namespace encuesta
                 {
                     return connection.Insert(item);
                 }
+            }
+        }
+
+        public int InsertItemWithID<T>(T item)
+        {
+            lock (locker)
+            {
+                var id = ((BaseItem)(object)item).ID;
+                if (id != 0)
+                {
+                    return connection.Insert(item);
+                }
+                else return -1;
             }
         }
 

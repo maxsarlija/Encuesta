@@ -4,7 +4,7 @@ using SQLite;
 using System;
 namespace encuesta
 {
-    public class CustomerAnswer : BaseItem
+    public class CustomerAnswer : BaseItemAutoIncrement
     {
         public CustomerAnswer() { }
 

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="encuesta.Vistas.SynchronizationConnection"
+             Title="Sincronización - Conexión">
+    <ContentPage.Content>
+
+            <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Introducción -->
+                <Label Text="Asegúrese de que su dispositivo esté conectado vía WiFi o datos móviles." FontSize="Medium" VerticalOptions="CenterAndExpand" 
+                                       Grid.Row="0" Grid.Column="0" FontAttributes="Bold" Grid.RowSpan="1"
+                                       TextColor="Blue"/>
+
+                <!-- Button test connection -->
+                <Button Text="TESTEAR CONEXIÓN" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="White"
+                        Grid.Row="2" Grid.Column="0" FontAttributes="Bold" Clicked="BtnTestConnection_OnClick"
+                        BackgroundColor="DarkBlue"></Button>
+
+
+                <!-- Testing connection text -->
+                <Label x:Name="txtTestingConnection" Text="Testeando conexión..." FontSize="Large" VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="StartAndExpand" IsVisible="False" Grid.Row="3" Grid.Column="0" />
+
+                <Label x:Name="txtConnection" FontSize="Large" VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="StartAndExpand" IsVisible="False" Grid.Row="4" Grid.Column="0" 
+                       TextColor="{Binding ConnectionColor}" />
+
+            </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

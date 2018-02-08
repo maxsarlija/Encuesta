@@ -40,7 +40,7 @@ namespace encuesta.Vistas
 
         async void BtnSync_OnClick(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new Vistas.Synchronization());
+            await Navigation.PushAsync(new Vistas.SynchronizationMenu());
         }
 
 

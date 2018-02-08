@@ -4,9 +4,18 @@ using SQLite;
 using System;
 namespace encuesta
 {
-    public class Answer : BaseItem
+    public class Answer : BaseItemAutoIncrement
     {
         public Answer() { }
+        public Answer(int _id, int _customerAnswerID, int _questionID, string _option, int _score)
+        {
+            ID = _id;
+            CustomerAnswerID = _customerAnswerID;
+            QuestionID = _questionID;
+            Option = _option;
+            Score = _score;
+        }
+
         public Answer(int _id, int _customerAnswerID, int _questionID)
         {
             ID = _id;

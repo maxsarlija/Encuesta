@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="encuesta.Vistas.Synchronization"
+             x:Class="encuesta.Vistas.SynchronizationInitial"
              Title="Sincronización">
     <ContentPage.Content>
 
@@ -19,10 +19,11 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Label Text="{Binding Username}" FontSize="Large" VerticalOptions="CenterAndExpand" 
-                                       Grid.Row="0" Grid.Column="0" FontAttributes="Bold"/>
-                                <Label Text="{Binding Password}" FontSize="Large" VerticalOptions="CenterAndExpand" 
-                                       Grid.Row="0" Grid.Column="1" FontAttributes="Bold" TextColor="Azure"/>
+                                <Label Text="{Binding Name}" FontSize="Large" VerticalOptions="CenterAndExpand" 
+                                       Grid.Row="0" Grid.Column="0" />
+                                <Label Text="{Binding SuccessDetails}" FontSize="Large" VerticalOptions="CenterAndExpand" 
+                                       Grid.Row="0" Grid.Column="1" FontAttributes="Bold" TextColor="{Binding SuccessColor}"
+                                       HorizontalOptions="End"/>
                             </Grid>
 
                         </ViewCell>
@@ -30,6 +31,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
