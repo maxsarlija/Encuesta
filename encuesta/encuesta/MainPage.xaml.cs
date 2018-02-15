@@ -1,5 +1,7 @@
-﻿using Plugin.Connectivity;
+﻿using encuesta.Vistas;
+using Plugin.Connectivity;
 using System;
+using System.IO;
 using System.Linq;
 using Xamarin.Forms;
 

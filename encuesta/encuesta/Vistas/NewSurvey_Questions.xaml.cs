@@ -4,11 +4,13 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using encuesta.Dominio.Enum;
 using System;
+using System.IO;
 
 namespace encuesta.Vistas
 {
     public partial class NewSurvey_Questions : ContentPage
     {
+
         public Customer SelectedCustomer { get; set; }
         public Survey SelectedSurvey { get; set; }
         public CustomerAnswer SelectedCustomerAnswer { get; set; }

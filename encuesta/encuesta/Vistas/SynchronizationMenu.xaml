@@ -9,11 +9,11 @@
 
             <!-- Chequear conexiones -->
             <Button x:Name="BtnConnection" Text="Conexión" Clicked="BtnConnection_OnClick" 
-                    BackgroundColor="Blue" TextColor="White" Margin="0, 0, 0, 20"/>
+                    BackgroundColor="#07A2BF" TextColor="White" Margin="0, 0, 0, 20"/>
 
             <!-- Sincronizar encuestas -->
             <Button x:Name="BtnSyncSurveys" Text="Sincronizar encuestas" Clicked="BtnSyncSurveys_OnClick" 
-                    BackgroundColor="Green" TextColor="White"/>
+                    BackgroundColor="#67B19F" TextColor="White"/>
 
 
         </StackLayout>
