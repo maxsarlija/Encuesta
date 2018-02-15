@@ -16,9 +16,10 @@ namespace encuesta
         {
             InitializeComponent();
             DB = new Database("Encuesta"); // Creates (if does not exist) a database named Encuesta
+            DB.CreateTable<User>();
+
             if (DB.Query<User>("SELECT * FROM User").FirstOrDefault() == null)
             {
-                DB.CreateTable<User>();
                 DB.InsertItemWithID(new User(1, "1", "1"));
             }
             EntryUsername.Completed += EntryUsername_Completed;
