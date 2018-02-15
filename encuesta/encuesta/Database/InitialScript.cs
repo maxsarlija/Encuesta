@@ -10,9 +10,7 @@ namespace encuesta
     {
         public InitialScript(Database database)
         {
-            database.DropTable<Answer>();
             database.DropTable<Customer>();
-            database.DropTable<CustomerAnswer>();
             database.DropTable<Group>();
             database.DropTable<Moment>();
             database.DropTable<Objective>();

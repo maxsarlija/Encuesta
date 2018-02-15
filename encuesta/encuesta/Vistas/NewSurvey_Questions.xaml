@@ -37,7 +37,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button x:Name="BtnViewSurveys" Text="Agregar Foto" Clicked="BtnViewSurveys_OnClick" HeightRequest="60"
+            <Button x:Name="BtnViewSurveys" Text="Agregar Foto" HeightRequest="60"
                     FontSize="Medium" TextColor="White" BackgroundColor="#C9723B"/>
 
         </StackLayout>
