@@ -11,10 +11,6 @@
             <Button x:Name="BtnConnection" Text="Conexión" Clicked="BtnConnection_OnClick" 
                     BackgroundColor="Blue" TextColor="White" Margin="0, 0, 0, 20"/>
 
-            <!-- Synchro inicial -->
-            <Button x:Name="BtnInitialSync" Text="Sincronización inicial" Clicked="BtnInitialSync_OnClick" 
-                    BackgroundColor="Orange" TextColor="White"/>
-
             <!-- Sincronizar encuestas -->
             <Button x:Name="BtnSyncSurveys" Text="Sincronizar encuestas" Clicked="BtnSyncSurveys_OnClick" 
                     BackgroundColor="Green" TextColor="White"/>

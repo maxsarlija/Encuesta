@@ -28,7 +28,7 @@ namespace encuesta.Vistas
             SynchroInfoList = new ObservableCollection<SynchroInfo>();
             SyncListView.ItemsSource = SynchroInfoList;
 
-            Task.Run(async () => await Sync());
+            System.Threading.Tasks.Task.Run(async () => await Sync());
         }
 
 
@@ -48,7 +48,7 @@ namespace encuesta.Vistas
             return false;
         }
 
-        protected async Task Sync()
+        protected async System.Threading.Tasks.Task Sync()
         {
             if (await CheckConnection())
             {

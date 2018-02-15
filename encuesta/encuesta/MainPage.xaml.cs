@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.Connectivity;
+using System;
 using System.Linq;
 using Xamarin.Forms;
 
@@ -13,8 +14,10 @@ namespace encuesta
         {
             InitializeComponent();
             DB = new Database("Encuesta"); // Creates (if does not exist) a database named Encuesta
-            var script = new InitialScript(DB);
-
+            if (DB.Query<User>("SELECT * FROM User").FirstOrDefault() == null)
+            {
+                DB.InsertItemWithID(new User(1, "1", "1"));
+            }
             EntryUsername.Completed += EntryUsername_Completed;
             EntryPassword.Completed += EntryPassword_Completed;
 
@@ -32,24 +35,33 @@ namespace encuesta
             EntryPassword.Focus();
         }
 
-        void OnTapGestureRecognizerTapped(object sender, EventArgs args)
+        async void OnTapGestureRecognizerTapped(object sender, EventArgs args)
         {
             if (EntryUsername.Text == null || EntryPassword.Text == null)
             {
-                DisplayAlert("Error", "Ingresar usuario y contraseña.", "OK");
+                await DisplayAlert("Error", "Ingresar usuario y contraseña.", "OK");
             }
             else
             {
-                var query = "SELECT * FROM User WHERE Username = " + EntryUsername.Text + " AND Password = " + EntryPassword.Text;
+                var query = "SELECT * FROM User WHERE Username = '" + EntryUsername.Text + "' AND Password = '" + EntryPassword.Text +"'";
                 var _userValidation = DB.Query<User>(query).FirstOrDefault();
 
                 if (_userValidation == null)
                 {
-                    DisplayAlert("Error", "El usuario y/o contraseña son inválidos.", "OK");
+                    await DisplayAlert("Error", "El usuario y/o contraseña son inválidos.", "OK");
                 }
                 else
                 {
-                    App.Current.MainPage = new NavigationPage(new encuesta.Vistas.nuevaencuesta());
+
+                    if (CrossConnectivity.Current.IsConnected)
+                    {
+                        await Navigation.PushAsync(new Vistas.SynchronizationInitial());
+                    }
+                    else
+                    {
+                        await DisplayAlert("Alerta", "Su dispositivo no se encuentra conectado a internet. Conéctese para sincronizar datos.", "OK");
+                    }
+
                 }
             }
             

@@ -28,42 +28,7 @@ namespace encuesta.Vistas
             await Navigation.PushAsync(new Vistas.SynchronizationConnection());
         }
 
-        // Synchro inicial.
-
-        //**************************
-        //**************************
-        // Para actualizar la base de datos de la app, deben sincronizarse todas las encuestas finalizadas.
-        // Todas las encuestas pendientes deben ser finalizadas y sincronizadas para actualizar la base de datos.
-        //**************************
-        //**************************
-        async void BtnInitialSync_OnClick(object sender, System.EventArgs e)
-        {
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                var customerAnswersPending = DB.Query<CustomerAnswer>("SELECT * FROM CustomerAnswer").Where(x => x.Status.Equals(SurveyStatus.PENDING)).Count();
-                var customerAnswersFinished = DB.Query<CustomerAnswer>("SELECT * FROM CustomerAnswer").Where(x => x.Status.Equals(SurveyStatus.COMPLETED)).Count();
-
-                if (customerAnswersFinished > 0)
-                {
-                    await DisplayAlert("Alerta", "Las encuestas finalizadas deben ser sincronizadas antes de actualizar la base de datos.", "OK");
-                }
-                else
-                {
-                    if (customerAnswersPending > 0)
-                    {
-                        await DisplayAlert("Alerta", "Existen encuestas pendientes. Todas las encuestas pendientes deben ser finalizadas y sincronizadas para continuar.", "OK");
-                    }
-                    else
-                    {
-                        await Navigation.PushAsync(new Vistas.SynchronizationInitial());
-                    }
-                }
-            }
-            else
-            {
-                await DisplayAlert("Alerta", "Su dispositivo no se encuentra conectado a internet.", "OK");
-            }
-        }
+        
 
 
         // Sincronizar encuestas finalizadas al servidor.

@@ -23,10 +23,11 @@ namespace encuesta.Vistas
         {
             InitializeComponent();
             DB = new Database("Encuesta");
+            var script = new InitialScript(DB);
             SynchroInfoList = new ObservableCollection<SynchroInfo>();
             SyncListView.ItemsSource = SynchroInfoList;
-            
-            Task.Run(async () => await Sync());
+
+            System.Threading.Tasks.Task.Run(async () => await Sync());
         }
 
         // Check connection first, before synchronizing.
@@ -38,16 +39,22 @@ namespace encuesta.Vistas
                 {
                     return true;
                 }
-                else { await DisplayAlert("Alerta", "Error al contactar servidor.", "OK"); }
+                else
+                {
+                    await DisplayAlert("Alerta", "Error al contactar servidor.", "OK");
+                }
             }
-            else { await DisplayAlert("Alerta", "Su dispositivo no se encuentra conectado a internet.", "OK"); }
+            else
+            {
+                await DisplayAlert("Alerta", "Su dispositivo no se encuentra conectado a internet.", "OK");
+            }
 
             return false;
         }
 
 
         // Synchronize all the tables that need to be pulled from server.
-        protected async Task Sync()
+        protected async System.Threading.Tasks.Task Sync()
         {
             if (await CheckConnection())
             {
@@ -78,16 +85,38 @@ namespace encuesta.Vistas
                     foreach (var item in surveys) { DB.InsertItemWithID(item); }
                 }
 
-                var surveyQuestions = await GetSurveyQuestionsAsync();
-                UpdateSynchro(new SynchroInfo("Preguntas de Encuestas", surveyQuestions != null));
-                if (surveyQuestions != null)
+                var groups = await GetGroupsAsync();
+                UpdateSynchro(new SynchroInfo("Grupos", groups != null));
+                if (groups != null)
                 {
-                    DB.DeleteAll<SurveyQuestion>();
-                    foreach (var item in surveyQuestions) { DB.InsertItemWithID(item); }
+                    DB.DeleteAll<Group>();
+                    foreach (var item in groups) { DB.InsertItemWithID(item); }
                 }
 
-                var sq = DB.GetItems<SurveyQuestion>();
+                var subSurveyGroups = await GetSurveyGroupsAsync();
+                UpdateSynchro(new SynchroInfo("Grupos de Encuesta", subSurveyGroups != null));
+                if (subSurveyGroups != null)
+                {
+                    DB.DeleteAll<SubGroup>();
+                    foreach (var item in subSurveyGroups) { DB.SaveItem(item); }
+                }
 
+                var subGroups = await GetSubGroupsAsync();
+                UpdateSynchro(new SynchroInfo("SubGrupos", subGroups != null));
+                if (subGroups != null)
+                {
+                    DB.DeleteAll<SubGroup>();
+                    foreach (var item in subGroups) { DB.InsertItemWithID(item); }
+                }
+
+                var subGroupQuestions = await GetSubGroupQuestionsAsync();
+                UpdateSynchro(new SynchroInfo("Preguntas de SubGrupos", subGroupQuestions != null));
+                if (subGroupQuestions != null)
+                {
+                    DB.DeleteAll<SubGroupQuestion>();
+                    foreach (var item in subGroupQuestions) { DB.SaveItem(item); }
+                }
+                
                 var moments = await GetMoments();
                 UpdateSynchro(new SynchroInfo("Categorías", moments != null));
                 if (moments != null)
@@ -104,7 +133,6 @@ namespace encuesta.Vistas
                     foreach (var item in questions) { DB.InsertItemWithID(item); }
                 }
 
-                var sq2 = DB.GetItems<Question>();
                 var questionOptions = await GetQuestionOptionsAsync();
                 UpdateSynchro(new SynchroInfo("Opciones de preguntas", questionOptions != null));
                 if (questionOptions != null)
@@ -113,23 +141,42 @@ namespace encuesta.Vistas
                     foreach (var item in questionOptions) { DB.InsertItemWithID(item); }
                 }
 
+                var zones = await GetZonesAsync();
+                UpdateSynchro(new SynchroInfo("Zonas", zones != null));
+                if (zones != null)
+                {
+                    DB.DeleteAll<Zone>();
+                    foreach (var item in zones) { DB.InsertItemWithID(item); }
+                }
+
+                var tasks = await GetTasksAsync();
+                UpdateSynchro(new SynchroInfo("Tareas", tasks != null));
+                if (tasks != null)
+                {
+                    DB.DeleteAll<Task>();
+                    foreach (var item in tasks) { DB.InsertItemWithID(item); }
+                }
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     DisplayAlert("Sincronización", SynchroInfoList.Any(x => !x.Success) ?
                         "Uno o más elementos han fallado." : "La sincronización ha finalizado con éxito.", "OK");
+
+                    App.Current.MainPage = new NavigationPage(new encuesta.Vistas.nuevaencuesta());
                 });
+
             }
-            
+
             return;
         }
-        
+
 
         protected void InsertNewData<T>(List<T> list)
         {
             // Erase all elements from table.
 
             // Insert the new ones.
-            
+
         }
 
         protected void UpdateSynchro(SynchroInfo _synchroInfo)
@@ -152,7 +199,7 @@ namespace encuesta.Vistas
             public string SuccessDetails { get; set; }
             public Color SuccessColor { get; set; }
         }
-        
+
 
 
         #region Repositories
@@ -188,7 +235,7 @@ namespace encuesta.Vistas
                 var jsonResponse = httpClient.GetAsync(uri).Result;
                 var jsonString = jsonResponse.Content.ReadAsStringAsync();
                 var list = JsonConvert.DeserializeObject<List<Customer>>(jsonString.Result);
-                
+
                 return list;
             }
             catch (Exception e)
@@ -287,16 +334,122 @@ namespace encuesta.Vistas
         }
 
 
-        public async Task<List<SurveyQuestion>> GetSurveyQuestionsAsync()
+        public async Task<List<SubGroupQuestion>> GetSubGroupQuestionsAsync()
         {
             var httpClient = new HttpClient();
 
             try
             {
-                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetSurveyQuestions.php");
+                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetSubGroupQuestions.php");
                 var jsonResponse = httpClient.GetAsync(uri).Result;
                 var jsonString = jsonResponse.Content.ReadAsStringAsync();
-                var list = JsonConvert.DeserializeObject<List<SurveyQuestion>>(jsonString.Result);
+                var list = JsonConvert.DeserializeObject<List<SubGroupQuestion>>(jsonString.Result);
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("Error", e.Message, "OK");
+            }
+
+            return null;
+        }
+
+        public async Task<List<Zone>> GetZonesAsync()
+        {
+            var httpClient = new HttpClient();
+
+            try
+            {
+                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetZones.php");
+                var jsonResponse = httpClient.GetAsync(uri).Result;
+                var jsonString = jsonResponse.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<Zone>>(jsonString.Result);
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("Error", e.Message, "OK");
+            }
+
+            return null;
+        }
+
+        public async Task<List<Task>> GetTasksAsync()
+        {
+            var httpClient = new HttpClient();
+
+            try
+            {
+                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetTasks.php");
+                var jsonResponse = httpClient.GetAsync(uri).Result;
+                var jsonString = jsonResponse.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<Task>>(jsonString.Result);
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("Error", e.Message, "OK");
+            }
+
+            return null;
+        }
+
+
+        public async Task<List<Group>> GetGroupsAsync()
+        {
+            var httpClient = new HttpClient();
+
+            try
+            {
+                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetGroups.php");
+                var jsonResponse = httpClient.GetAsync(uri).Result;
+                var jsonString = jsonResponse.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<Group>>(jsonString.Result);
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("Error", e.Message, "OK");
+            }
+
+            return null;
+        }
+
+        public async Task<List<SubGroup>> GetSubGroupsAsync()
+        {
+            var httpClient = new HttpClient();
+
+            try
+            {
+                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetSubGroups.php");
+                var jsonResponse = httpClient.GetAsync(uri).Result;
+                var jsonString = jsonResponse.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<SubGroup>>(jsonString.Result);
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("Error", e.Message, "OK");
+            }
+
+            return null;
+        }
+
+        public async Task<List<SurveyGroup>> GetSurveyGroupsAsync()
+        {
+            var httpClient = new HttpClient();
+
+            try
+            {
+                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetSurveyGroups.php");
+                var jsonResponse = httpClient.GetAsync(uri).Result;
+                var jsonString = jsonResponse.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<SurveyGroup>>(jsonString.Result);
 
                 return list;
             }
@@ -309,5 +462,7 @@ namespace encuesta.Vistas
         }
 
         #endregion
+
+
     }
 }

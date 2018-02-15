@@ -25,7 +25,7 @@ namespace encuesta.Vistas
             await CheckConnection();
         }
 
-        protected async Task CheckConnection()
+        protected async System.Threading.Tasks.Task CheckConnection()
         {
             txtTestingConnection.IsVisible = true;
             try

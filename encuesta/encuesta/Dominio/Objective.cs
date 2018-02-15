@@ -3,31 +3,28 @@ using SQLite;
 using System;
 namespace encuesta
 {
-    public class Survey : BaseItem
+    public class Objective : BaseItem
     {
-        public Survey() { }
+        public Objective() { }
 
-        public Survey(int _id, string _name, string _notes, int _scope, int _zoneID)
+        public Objective(int _id, string _name, int _groupID, string _notes)
         {
             ID = _id;
             Name = _name;
+            GroupID = _groupID;
             Notes = _notes;
-            Scope = _scope;
-            ZoneID = _zoneID;
         }
 
-        public Survey(string _name, string _notes, int _scope, int _zoneID)
+        public Objective(string _name, int _groupID, string _notes)
         {
             Name = _name;
+            GroupID = _groupID;
             Notes = _notes;
-            Scope = _scope;
-            ZoneID = _zoneID;
         }
 
         public string Name { get; set; }
+        public int GroupID { get; set; }
         public string Notes { get; set; }
-        public int Scope { get; set; }
-        public int ZoneID { get; set; }
 
         public override string ToString()
         {

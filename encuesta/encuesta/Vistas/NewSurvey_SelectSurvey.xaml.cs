@@ -36,7 +36,15 @@ namespace encuesta.Vistas
             DB.SaveItem(new CustomerAnswer(SelectedCustomer.ID, _selectedSurvey.ID));
 
             var _customerAnswer = DB.Query<CustomerAnswer>("SELECT * FROM CustomerAnswer WHERE CustomerID = ? ORDER BY ID DESC LIMIT 1", SelectedCustomer.ID).FirstOrDefault();
-            var _surveyQuestions = DB.Query<SurveyQuestion>("SELECT * FROM SurveyQuestion WHERE SurveyID = ? ORDER BY QuestionNumber", _selectedSurvey.ID);
+            string sql = "SELECT Q.* " +
+                        "FROM  SubGroupQuestion Q " +
+                        "LEFT OUTER JOIN SubGroup SG ON Q.SubGroupID = SG.ID " +
+                        "LEFT OUTER JOIN SurveyGroup S ON SG.GroupID = S.GroupID " +
+                        "WHERE S.SurveyID = ? " +
+                        "ORDER BY Q.QuestionOrder;";
+
+            var _surveyQuestions = DB.Query<SubGroupQuestion>(sql, _selectedSurvey.ID);
+
 
 
             foreach (var sq in _surveyQuestions)

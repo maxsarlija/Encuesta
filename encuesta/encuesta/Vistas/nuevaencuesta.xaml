@@ -19,9 +19,6 @@
             <!-- Synchronization -->
             <Button x:Name="BtnSync" Text="Sincronizar" Clicked="BtnSync_OnClick"/>
 
-            <!-- Clientes -->
-            <Button x:Name="BtnBorrarDatos" Text="RESETEAR DATOS" Clicked="BtnBorrarDatos_OnClick" BackgroundColor="Red" TextColor="White"/>
-
 
         </StackLayout>
     </ContentPage.Content>

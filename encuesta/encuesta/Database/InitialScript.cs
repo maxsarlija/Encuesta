@@ -10,15 +10,37 @@ namespace encuesta
     {
         public InitialScript(Database database)
         {
+            database.DropTable<Answer>();
+            database.DropTable<Customer>();
+            database.DropTable<CustomerAnswer>();
+            database.DropTable<Group>();
+            database.DropTable<Moment>();
+            database.DropTable<Objective>();
+            database.DropTable<Question>();
+            database.DropTable<QuestionOption>();
+            database.DropTable<SubGroupQuestion>();
+            database.DropTable<SubGroup>();
+            database.DropTable<Survey>();
+            database.DropTable<SurveyGroup>();
+            database.DropTable<Task>();
+            database.DropTable<User>();
+            database.DropTable<Zone>();
+
             database.CreateTable<Answer>();
             database.CreateTable<Customer>();
             database.CreateTable<CustomerAnswer>();
+            database.CreateTable<Group>();
             database.CreateTable<Moment>();
+            database.CreateTable<Objective>();
             database.CreateTable<Question>();
             database.CreateTable<QuestionOption>();
+            database.CreateTable<SubGroupQuestion>();
+            database.CreateTable<SubGroup>();
             database.CreateTable<Survey>();
-            database.CreateTable<SurveyQuestion>();
+            database.CreateTable<SurveyGroup>();
+            database.CreateTable<Task>();
             database.CreateTable<User>();
+            database.CreateTable<Zone>();
 
             // Insert username.
             if (database.Query<User>("SELECT * FROM User").FirstOrDefault() == null)
@@ -26,6 +48,9 @@ namespace encuesta
                 database.InsertItemWithID(new User(1, "1", "1"));
             }
 
+            // DATOS PARA LA DEMO.
+
+            /*
             // Insert test customers.
             if (database.Query<Customer>("SELECT * FROM Customer").FirstOrDefault() == null)
             {
@@ -86,7 +111,7 @@ namespace encuesta
             }
 
 
-
+            */
         }
     }
 }
