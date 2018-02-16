@@ -21,6 +21,7 @@ namespace encuesta
             if (DB.Query<User>("SELECT * FROM User").FirstOrDefault() == null)
             {
                 DB.InsertItemWithID(new User(1, "1", "1"));
+                new InitialScript(DB);
             }
             EntryUsername.Completed += EntryUsername_Completed;
             EntryPassword.Completed += EntryPassword_Completed;
