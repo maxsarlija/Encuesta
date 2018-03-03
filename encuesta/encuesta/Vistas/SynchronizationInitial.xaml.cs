@@ -15,9 +15,7 @@ namespace encuesta.Vistas
     {
         protected Database DB { get; set; }
         protected ObservableCollection<SynchroInfo> SynchroInfoList { get; set; }
-
-        private const double progressPercentage = 1 / 7;
-        private double Progress { get; set; }
+        
 
         public SynchronizationInitial()
         {
@@ -61,6 +59,8 @@ namespace encuesta.Vistas
                 // Get data from server.
                 // Update UI.
                 // Insert new data on local DB.
+
+                // Users.
                 var users = await GetUsersAsync();
                 UpdateSynchro(new SynchroInfo("Usuarios", users != null));
                 if (users != null)
@@ -69,6 +69,7 @@ namespace encuesta.Vistas
                     foreach (var item in users) { DB.InsertItemWithID(item); }
                 }
 
+                // Customers.
                 var customers = await GetCustomersAsync();
                 UpdateSynchro(new SynchroInfo("Clientes", customers != null));
                 if (customers != null)
@@ -76,7 +77,26 @@ namespace encuesta.Vistas
                     DB.DeleteAll<Customer>();
                     foreach (var item in customers) { DB.InsertItemWithID(item); }
                 }
+                
+                // User Class.
+                var classes = await GetClassesAsync();
+                UpdateSynchro(new SynchroInfo("Clases de Usuario", classes != null));
+                if (classes != null)
+                {
+                    DB.DeleteAll<Class>();
+                    foreach (var item in classes) { DB.InsertItemWithID(item); }
+                }
 
+                // Salesmen - Supervisors table.
+                var salesmen = await GetSalesmenAsync();
+                UpdateSynchro(new SynchroInfo("Supervisor - Vendedor", salesmen != null));
+                if (salesmen != null)
+                {
+                    DB.DeleteAll<Salesmen>();
+                    foreach (var item in salesmen) { DB.SaveItem(item); }
+                }
+
+                // Surveys.
                 var surveys = await GetSurveysAsync();
                 UpdateSynchro(new SynchroInfo("Encuestas", surveys != null));
                 if (surveys != null)
@@ -85,6 +105,7 @@ namespace encuesta.Vistas
                     foreach (var item in surveys) { DB.InsertItemWithID(item); }
                 }
 
+                // Groups.
                 var groups = await GetGroupsAsync();
                 UpdateSynchro(new SynchroInfo("Grupos", groups != null));
                 if (groups != null)
@@ -93,14 +114,16 @@ namespace encuesta.Vistas
                     foreach (var item in groups) { DB.InsertItemWithID(item); }
                 }
 
+                // SubGroups - Groups table.
                 var subSurveyGroups = await GetSurveyGroupsAsync();
                 UpdateSynchro(new SynchroInfo("Grupos de Encuesta", subSurveyGroups != null));
                 if (subSurveyGroups != null)
                 {
-                    DB.DeleteAll<SubGroup>();
+                    DB.DeleteAll<SurveyGroup>();
                     foreach (var item in subSurveyGroups) { DB.SaveItem(item); }
                 }
-
+                
+                // SubGroups.
                 var subGroups = await GetSubGroupsAsync();
                 UpdateSynchro(new SynchroInfo("SubGrupos", subGroups != null));
                 if (subGroups != null)
@@ -109,6 +132,7 @@ namespace encuesta.Vistas
                     foreach (var item in subGroups) { DB.InsertItemWithID(item); }
                 }
 
+                // SubGroup Questions.
                 var subGroupQuestions = await GetSubGroupQuestionsAsync();
                 UpdateSynchro(new SynchroInfo("Preguntas de SubGrupos", subGroupQuestions != null));
                 if (subGroupQuestions != null)
@@ -117,6 +141,7 @@ namespace encuesta.Vistas
                     foreach (var item in subGroupQuestions) { DB.SaveItem(item); }
                 }
                 
+                // Moments - Categories.
                 var moments = await GetMoments();
                 UpdateSynchro(new SynchroInfo("Categorías", moments != null));
                 if (moments != null)
@@ -125,6 +150,7 @@ namespace encuesta.Vistas
                     foreach (var item in moments) { DB.InsertItemWithID(item); }
                 }
 
+                // Questions.
                 var questions = await GetQuestionAsync();
                 UpdateSynchro(new SynchroInfo("Preguntas", questions != null));
                 if (questions != null)
@@ -133,6 +159,7 @@ namespace encuesta.Vistas
                     foreach (var item in questions) { DB.InsertItemWithID(item); }
                 }
 
+                // QuestionOptions - NOT IN USE.
                 var questionOptions = await GetQuestionOptionsAsync();
                 UpdateSynchro(new SynchroInfo("Opciones de preguntas", questionOptions != null));
                 if (questionOptions != null)
@@ -141,6 +168,7 @@ namespace encuesta.Vistas
                     foreach (var item in questionOptions) { DB.InsertItemWithID(item); }
                 }
 
+                // Zones.
                 var zones = await GetZonesAsync();
                 UpdateSynchro(new SynchroInfo("Zonas", zones != null));
                 if (zones != null)
@@ -149,6 +177,7 @@ namespace encuesta.Vistas
                     foreach (var item in zones) { DB.InsertItemWithID(item); }
                 }
 
+                // Tasks.
                 var tasks = await GetTasksAsync();
                 UpdateSynchro(new SynchroInfo("Tareas", tasks != null));
                 if (tasks != null)
@@ -246,6 +275,48 @@ namespace encuesta.Vistas
             return null;
         }
 
+        public async Task<List<Class>> GetClassesAsync()
+        {
+            var httpClient = new HttpClient();
+
+            try
+            {
+                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetClasses.php");
+                var jsonResponse = httpClient.GetAsync(uri).Result;
+                var jsonString = jsonResponse.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<Class>>(jsonString.Result);
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("Error", e.Message, "OK");
+            }
+
+            return null;
+        }
+
+
+        public async Task<List<Salesmen>> GetSalesmenAsync()
+        {
+            var httpClient = new HttpClient();
+
+            try
+            {
+                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetClasses.php");
+                var jsonResponse = httpClient.GetAsync(uri).Result;
+                var jsonString = jsonResponse.Content.ReadAsStringAsync();
+                var list = JsonConvert.DeserializeObject<List<Salesmen>>(jsonString.Result);
+
+                return list;
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("Error", e.Message, "OK");
+            }
+
+            return null;
+        }
 
         public async Task<List<Survey>> GetSurveysAsync()
         {

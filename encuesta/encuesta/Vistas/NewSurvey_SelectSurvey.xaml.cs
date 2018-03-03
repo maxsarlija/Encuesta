@@ -33,7 +33,7 @@ namespace encuesta.Vistas
                 return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
             }
             Survey _selectedSurvey = (Survey)e.SelectedItem;
-            DB.SaveItem(new CustomerAnswer(SelectedCustomer.ID, _selectedSurvey.ID));
+            DB.SaveItem(new CustomerAnswer(SelectedCustomer.ID, _selectedSurvey.ID, App.UserName));
 
             var _customerAnswer = DB.Query<CustomerAnswer>("SELECT * FROM CustomerAnswer WHERE CustomerID = ? ORDER BY ID DESC LIMIT 1", SelectedCustomer.ID).FirstOrDefault();
             string sql = "SELECT Q.* " +

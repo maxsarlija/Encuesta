@@ -8,18 +8,20 @@ namespace encuesta
     {
         public CustomerAnswer() { }
 
-        public CustomerAnswer(int _id, int _customerID, int _surveyID)
+        public CustomerAnswer(int _id, int _customerID, int _surveyID, string _userID)
         {
             ID = _id;
             CustomerID = _customerID;
             SurveyID = _surveyID;
             Status = SurveyStatus.PENDING;
+            UserID = _userID;
         }
-        public CustomerAnswer(int _customerID, int _surveyID)
+        public CustomerAnswer(int _customerID, int _surveyID, string _userID)
         {
             CustomerID = _customerID;
             SurveyID = _surveyID;
             Status = SurveyStatus.PENDING;
+            UserID = _userID;
         }
 
 
@@ -28,6 +30,7 @@ namespace encuesta
         public int SurveyID { get; set; }
         public DateTime DateCompleted { get; set; }
         public string Status { get; set; }
+        public string UserID { get; set; }
         
         public override string ToString()
         {

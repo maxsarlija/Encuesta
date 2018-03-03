@@ -7,14 +7,34 @@
 
         <StackLayout VerticalOptions="Center">
 
-            <!-- Chequear conexiones -->
+            <!-- Chequear conexiones 
             <Button x:Name="BtnConnection" Text="Conexión" Clicked="BtnConnection_OnClick" 
                     BackgroundColor="#07A2BF" TextColor="White" Margin="0, 0, 0, 20"/>
 
-            <!-- Sincronizar encuestas -->
             <Button x:Name="BtnSyncSurveys" Text="Sincronizar encuestas" Clicked="BtnSyncSurveys_OnClick" 
-                    BackgroundColor="#67B19F" TextColor="White"/>
+                    BackgroundColor="#67B19F" TextColor="White"/> -->
 
+
+            <!-- New survey -->
+            <Image Source="conexion.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+               x:Name="Connection" HeightRequest="80">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="BtnConnection_OnClick"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+
+
+            <!-- New survey -->
+            <Image Source="sincronizar_encuestas.png" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+               x:Name="SyncSurveys" HeightRequest="80">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="BtnSyncSurveys_OnClick"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
 
         </StackLayout>
     </ContentPage.Content>

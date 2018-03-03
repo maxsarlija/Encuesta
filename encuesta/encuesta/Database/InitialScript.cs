@@ -10,12 +10,14 @@ namespace encuesta
     {
         public InitialScript(Database database)
         {
+            database.DropTable<Class>();
             database.DropTable<Customer>();
             database.DropTable<Group>();
             database.DropTable<Moment>();
             database.DropTable<Objective>();
             database.DropTable<Question>();
             database.DropTable<QuestionOption>();
+            database.DropTable<Salesmen>();
             database.DropTable<SubGroupQuestion>();
             database.DropTable<SubGroup>();
             database.DropTable<Survey>();
@@ -25,6 +27,7 @@ namespace encuesta
             database.DropTable<Zone>();
 
             database.CreateTable<Answer>();
+            database.CreateTable<Class>();
             database.CreateTable<Customer>();
             database.CreateTable<CustomerAnswer>();
             database.CreateTable<Group>();
@@ -32,6 +35,7 @@ namespace encuesta
             database.CreateTable<Objective>();
             database.CreateTable<Question>();
             database.CreateTable<QuestionOption>();
+            database.CreateTable<Salesmen>();
             database.CreateTable<SubGroupQuestion>();
             database.CreateTable<SubGroup>();
             database.CreateTable<Survey>();
@@ -43,7 +47,7 @@ namespace encuesta
             // Insert username.
             if (database.Query<User>("SELECT * FROM User").FirstOrDefault() == null)
             {
-                database.InsertItemWithID(new User(1, "1", "1"));
+                database.InsertItemWithID(new User(1, "1", "1", 0));
             }
 
             // DATOS PARA LA DEMO.

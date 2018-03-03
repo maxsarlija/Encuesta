@@ -39,7 +39,7 @@ namespace encuesta.Vistas
             InitializeComponent();
 
             DB = new Database("Encuesta");
-
+            
 
             CustomerCollection = new ObservableCollection<Customer>();
 

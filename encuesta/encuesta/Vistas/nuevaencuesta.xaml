@@ -7,22 +7,59 @@
         <StackLayout VerticalOptions="Center">
 
 
-            <!-- Clientes -->
+            <!-- Clientes 
             <Button x:Name="BtnNewSurvey" Text="Nueva Encuesta" Clicked="BtnNewSurvey_OnClick" HeightRequest="60"
                     FontSize="Medium" TextColor="White" BackgroundColor="#C9723B"/>
 
-            <!-- Clientes -->
             <Button x:Name="BtnViewSurveys" Text="Ver Encuestas" Clicked="BtnViewSurveys_OnClick" HeightRequest="60"
                     FontSize="Medium" TextColor="White" BackgroundColor="#C9723B"/>
 
-            <!-- Clientes -->
             <Button x:Name="BtnTasks" Text="Tareas" Clicked="BtnTasks_OnClick" HeightRequest="60"
                     FontSize="Medium" TextColor="White" BackgroundColor="#07A2BF"/>
-            
-            <!-- Synchronization -->
-            <Button x:Name="BtnSync" Text="Sincronizar" Clicked="BtnSync_OnClick" HeightRequest="60"
-                    FontSize="Medium" TextColor="White" BackgroundColor="#67B19F"/>
 
+            <Button x:Name="BtnSync" Text="Sincronizar" Clicked="BtnSync_OnClick" HeightRequest="60"
+                    FontSize="Medium" TextColor="White" BackgroundColor="#67B19F"/> -->
+
+
+            <!-- New survey -->
+            <Image Source="nueva_encuesta.png" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"
+               x:Name="NewSurvey" HeightRequest="80">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="BtnNewSurvey_OnClick"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <!-- New survey -->
+            <Image Source="ver_encuesta.png" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"
+               x:Name="ViewSurveys" HeightRequest="80">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="BtnViewSurveys_OnClick"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <!-- Tasks -->
+            <Image Source="tareas.png" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"
+               x:Name="Tasks" HeightRequest="80">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="BtnTasks_OnClick"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <!-- Synchronization -->
+            <Image Source="sincronizar.png" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"
+               x:Name="Syncrhonization" HeightRequest="80">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="BtnSync_OnClick"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
 
         </StackLayout>
     </ContentPage.Content>
