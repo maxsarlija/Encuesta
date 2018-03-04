@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using encuesta.Dominio.Enum;
 
 namespace encuesta.Vistas
 {
@@ -20,8 +21,32 @@ namespace encuesta.Vistas
             Title = "Encuesta - " + SelectedCustomer.Name;
 
             DB = new Database("Encuesta");
-            var _surveys = DB.GetItems<Survey>();
-            
+            // Check if the matinal plan has been done already.
+            var matinalPlanIsDone = DB.Query<CustomerAnswer>("SELECT CA.* " +
+                                                            "FROM CustomerAnswer CA " +
+                                                            "LEFT OUTER JOIN Survey S ON S.ID = CA.SurveyID " +
+                                                            "WHERE S.PlanGold = 2").Count() > 0;
+            IEnumerable<Survey> _surveys;
+            // If it has been done, only offer the other surveys to be completed.
+            if (matinalPlanIsDone)
+            {
+                _surveys = DB.GetItems<Survey>().Where(x => SelectedCustomer.PlanGoldBool ? x.PlanGold != Plan.PLAN_MATINAL : 
+                                                                                            x.PlanGold == Plan.PLAN);
+            }
+            else
+            {
+                // Check if the customer is Plan Gold.
+                if(SelectedCustomer.PlanGoldBool)
+                {
+                    _surveys = DB.GetItems<Survey>();
+
+                } else
+                {
+                    _surveys = DB.GetItems<Survey>().Where(x => x.PlanGold != Plan.PLAN_GOLD);
+                }
+
+            }
+
             SurveysListView.ItemsSource = _surveys;
         }
 
@@ -35,6 +60,7 @@ namespace encuesta.Vistas
             Survey _selectedSurvey = (Survey)e.SelectedItem;
             DB.SaveItem(new CustomerAnswer(SelectedCustomer.ID, _selectedSurvey.ID, App.UserName));
 
+            // Create the list of questions, and the CustomerAnswer row.
             var _customerAnswer = DB.Query<CustomerAnswer>("SELECT * FROM CustomerAnswer WHERE CustomerID = ? ORDER BY ID DESC LIMIT 1", SelectedCustomer.ID).FirstOrDefault();
             string sql = "SELECT Q.* " +
                         "FROM  SubGroupQuestion Q " +

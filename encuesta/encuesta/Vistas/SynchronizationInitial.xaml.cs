@@ -191,7 +191,13 @@ namespace encuesta.Vistas
                     DisplayAlert("Sincronización", SynchroInfoList.Any(x => !x.Success) ?
                         "Uno o más elementos han fallado." : "La sincronización ha finalizado con éxito.", "OK");
 
-                    App.Current.MainPage = new NavigationPage(new encuesta.Vistas.nuevaencuesta());
+                    if (App.UserName.Equals("1"))
+                    {
+                        App.Current.MainPage = new NavigationPage(new MainPage());
+                    } else {
+                        App.Current.MainPage = new NavigationPage(new MainMenu());
+                    }
+                    
                 });
 
             }
@@ -303,7 +309,7 @@ namespace encuesta.Vistas
 
             try
             {
-                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetClasses.php");
+                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetSalesmen.php");
                 var jsonResponse = httpClient.GetAsync(uri).Result;
                 var jsonString = jsonResponse.Content.ReadAsStringAsync();
                 var list = JsonConvert.DeserializeObject<List<Salesmen>>(jsonString.Result);

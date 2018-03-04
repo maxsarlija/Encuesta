@@ -113,7 +113,9 @@ namespace encuesta.Vistas
                 DB.SaveItem(SelectedCustomerAnswer);
 
                 await DisplayAlert("Encuesta", "La encuesta ha finalizado.", "OK");
-                await Navigation.PopToRootAsync();
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 1]);
+                // This PopAsync will now go to List Page
+                await Navigation.PopAsync();
             }
 
         }

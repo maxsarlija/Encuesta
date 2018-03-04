@@ -8,5 +8,6 @@ namespace encuesta.Dominio.Enum
     {
         public const int PLAN = 0;
         public const int PLAN_GOLD = 1;
+        public const int PLAN_MATINAL = 2;
     }
 }

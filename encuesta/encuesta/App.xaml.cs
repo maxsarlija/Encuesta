@@ -19,6 +19,7 @@ namespace encuesta
             set => AppSettings.AddOrUpdateValue(nameof(UserName), value);
         }
 
+        public static User User { get; set; }
 
         public App ()
 		{

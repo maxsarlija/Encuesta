@@ -32,6 +32,11 @@ namespace encuesta
         public int ZoneID { get; set; }
         public int PlanGold { get; set; }
 
+        public bool PlanGoldBool
+        {
+            get { return PlanGold == 1 ? true : false; }
+        }
+
         public override string ToString()
         {
             return $"{ID}, {Name}";

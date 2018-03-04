@@ -17,6 +17,7 @@ namespace encuesta.Vistas
             set { _searchedText = value; OnPropertyChanged(); }
         }
 
+        protected User CurrentSalesman { get; set; }
         protected Database DB { get; set; }
         private ObservableCollection<Customer> _customerCollection;
 
@@ -34,16 +35,23 @@ namespace encuesta.Vistas
         }
 
 
-        public CustomersList()
+        public CustomersList(User _salesman)
         {
             InitializeComponent();
 
             DB = new Database("Encuesta");
-            
+            CurrentSalesman = _salesman;
 
             CustomerCollection = new ObservableCollection<Customer>();
 
-            foreach (var item in DB.GetItems<Customer>())
+            // Check if there are any customers for this salesman.
+            var SalesmanHasCustomers = DB.GetItems<Customer>().Where(c => c.SalesmanID == CurrentSalesman.ID).Count() > 0;
+
+            // If there are any customer for the salesmen, show them. If not, just show the ones for the zone of the User. 
+            var _customersList = SalesmanHasCustomers ? DB.GetItems<Customer>().Where(c => c.SalesmanID == CurrentSalesman.ID)
+                                                      : DB.GetItems<Customer>().Where(c => c.ZoneID == App.User.ZoneID);
+
+            foreach (var item in _customersList)
             {
                 CustomerCollection.Add(item);
             }
@@ -64,7 +72,7 @@ namespace encuesta.Vistas
 
             ((ListView)sender).SelectedItem = null;
         }
-        
+
 
         private void SearchBar_OnTextChanged(object sender, TextChangedEventArgs e)
         {
@@ -75,8 +83,18 @@ namespace encuesta.Vistas
             else
             {
                 CustomerCollection.Clear();
-                foreach (var item in DB.GetItems<Customer>().Where(c => c.Name.ToLower().Contains(e.NewTextValue.ToLower()) || 
-                                                                        c.Address.ToLower().Contains(e.NewTextValue.ToLower())))
+                // Check if there are any customers for this salesman.
+                var SalesmanHasCustomers = DB.GetItems<Customer>().Where(c => c.SalesmanID == CurrentSalesman.ID).Count() > 0;
+
+                // If there are any customer for the salesmen, show them. If not, just show the ones for the zone of the User. 
+                var _customersList = SalesmanHasCustomers ? DB.GetItems<Customer>().Where(c => c.SalesmanID == CurrentSalesman.ID &&
+                                                                    (c.Name.ToLower().Contains(e.NewTextValue.ToLower()) ||
+                                                                     c.Address.ToLower().Contains(e.NewTextValue.ToLower())))
+                                                          : DB.GetItems<Customer>().Where(c => c.ZoneID == App.User.ZoneID &&
+                                                                    (c.Name.ToLower().Contains(e.NewTextValue.ToLower()) ||
+                                                                     c.Address.ToLower().Contains(e.NewTextValue.ToLower())));
+
+                foreach (var item in _customersList)
                 {
                     CustomerCollection.Add(item);
                 }

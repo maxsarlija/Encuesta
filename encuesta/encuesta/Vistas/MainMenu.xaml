@@ -1,24 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="encuesta.Vistas.nuevaencuesta"
+             x:Class="encuesta.Vistas.MainMenu"
              Title="Menú Principal">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center">
 
-
-            <!-- Clientes 
-            <Button x:Name="BtnNewSurvey" Text="Nueva Encuesta" Clicked="BtnNewSurvey_OnClick" HeightRequest="60"
-                    FontSize="Medium" TextColor="White" BackgroundColor="#C9723B"/>
-
-            <Button x:Name="BtnViewSurveys" Text="Ver Encuestas" Clicked="BtnViewSurveys_OnClick" HeightRequest="60"
-                    FontSize="Medium" TextColor="White" BackgroundColor="#C9723B"/>
-
-            <Button x:Name="BtnTasks" Text="Tareas" Clicked="BtnTasks_OnClick" HeightRequest="60"
-                    FontSize="Medium" TextColor="White" BackgroundColor="#07A2BF"/>
-
-            <Button x:Name="BtnSync" Text="Sincronizar" Clicked="BtnSync_OnClick" HeightRequest="60"
-                    FontSize="Medium" TextColor="White" BackgroundColor="#67B19F"/> -->
 
 
             <!-- New survey -->

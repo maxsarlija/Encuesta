@@ -23,8 +23,17 @@
     <Compile Update="Vistas\NewSurvey_Questions.xaml.cs">
       <DependentUpon>NewSurvey_Questions.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Vistas\SalesmenList.xaml.cs">
+      <DependentUpon>SalesmenList.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Vistas\NewSurvey_SelectSalesman.xaml.cs">
+      <DependentUpon>NewSurvey_SelectSalesman.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Vistas\NewSurvey_SelectCustomer.xaml.cs">
       <DependentUpon>NewSurvey_SelectCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Vistas\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Update="Vistas\SynchronizationConnection.xaml.cs">
       <DependentUpon>SynchronizationConnection.xaml</DependentUpon>
@@ -81,7 +90,7 @@
     <EmbeddedResource Update="Vistas\evolucionEncuestas\evolucionVisita.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vistas\nuevaencuesta.xaml">
+    <EmbeddedResource Update="Vistas\MainMenu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -47,7 +47,7 @@ namespace encuesta
             // Insert username.
             if (database.Query<User>("SELECT * FROM User").FirstOrDefault() == null)
             {
-                database.InsertItemWithID(new User(1, "1", "1", 0));
+                database.InsertItemWithID(new User(1, "1", "1", 0, "Usuario Inicial", 1));
             }
 
             // DATOS PARA LA DEMO.

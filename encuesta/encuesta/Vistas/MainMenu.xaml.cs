@@ -9,10 +9,10 @@ using Xamarin.Forms.Xaml;
 namespace encuesta.Vistas
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class nuevaencuesta : ContentPage
+    public partial class MainMenu : ContentPage
     {
         private Database _database;
-        public nuevaencuesta()
+        public MainMenu()
         {
             InitializeComponent();
 
@@ -24,13 +24,13 @@ namespace encuesta.Vistas
         async void BtnNewSurvey_OnClick(object sender, System.EventArgs e)
         {
 
-            await Navigation.PushAsync(new Vistas.NewSurvey_SelectCustomer());
+            await Navigation.PushAsync(new Vistas.NewSurvey_SelectSalesman());
 
         }
 
         async void BtnViewSurveys_OnClick(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new Vistas.CustomersList());
+            await Navigation.PushAsync(new Vistas.SalesmenList());
         }
 
         async void BtnTasks_OnClick(object sender, System.EventArgs e)
