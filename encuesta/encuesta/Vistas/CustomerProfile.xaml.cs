@@ -26,11 +26,7 @@ namespace encuesta.Vistas
         {
             await Navigation.PushAsync(new Vistas.CustomerSurveys(SelectedCustomer));
         }
-
-        async void BtnStartSurvey_OnClick(object sender, System.EventArgs e)
-        {
-            await Navigation.PushAsync(new Vistas.NewSurvey_SelectSurvey(SelectedCustomer));
-        }
+        
 
 
     }

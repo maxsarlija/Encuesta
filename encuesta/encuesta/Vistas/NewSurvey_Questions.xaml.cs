@@ -5,6 +5,8 @@ using Xamarin.Forms.Xaml;
 using encuesta.Dominio.Enum;
 using System;
 using System.IO;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 
 namespace encuesta.Vistas
 {
@@ -16,10 +18,15 @@ namespace encuesta.Vistas
         public CustomerAnswer SelectedCustomerAnswer { get; set; }
         protected Database DB { get; set; }
 
+        public bool NoPhoto { get; set; } = true;
+        public bool PhotoIsTaken { get; set; } = false;
+
+        protected MediaFile CurrentFile { get; set; } 
+
         public NewSurvey_Questions(CustomerAnswer _customerAnswer, Survey _survey, Customer _customer)
         {
             InitializeComponent();
-
+            
             DB = new Database("Encuesta");
 
             SelectedCustomerAnswer = _customerAnswer;
@@ -130,6 +137,52 @@ namespace encuesta.Vistas
                 }
             });
             return true;
+        }
+
+
+        async void TakeAPhotoButton_OnClicked(object sender, System.EventArgs e)
+        {
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                await DisplayAlert("Cámara", "La cámara no está disponible.", "OK");
+                return;
+            }
+
+            CurrentFile = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium,
+                Directory = "Encuesta",
+                Name = SelectedCustomerAnswer.ID + ".jpg"
+            });
+
+            if (CurrentFile == null)
+                return;
+
+            PhotoIsTaken = true;
+            NoPhoto = false;
+            await DisplayAlert("Foto", CurrentFile.Path, "OK");
+        }
+
+        async void PickAPhotoButton_OnClicked(object sender, System.EventArgs e)
+        {
+            if (!CrossMedia.Current.IsPickPhotoSupported)
+            {
+                await DisplayAlert("Foto", "No tiene permiso para ver fotos.", "OK");
+                return;
+            }
+            /*var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+            {
+                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
+            });
+            */
+
+            if (CurrentFile == null)
+                return;
+
+            if(PhotoIsTaken)
+            {
+                await Navigation.PushAsync(new ViewPhoto(CurrentFile));
+            }
         }
 
     }

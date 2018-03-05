@@ -131,12 +131,12 @@ namespace encuesta.Vistas
                         _salesmenList.Add(item);
                     }
                 }
-
-
-
+           
+                
                 foreach (var item in _salesmenList)
                 {
-                    SalesmenCollection.Add(new Salesman(item));
+                    if(item != null)
+                        SalesmenCollection.Add(new Salesman(item));
                 }
 
                 SalesmenListView.ItemsSource = SalesmenCollection;

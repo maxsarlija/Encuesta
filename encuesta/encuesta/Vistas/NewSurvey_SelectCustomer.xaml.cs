@@ -77,7 +77,7 @@ namespace encuesta.Vistas
 
             if (matinalPlanIsDone)
             {
-                await Navigation.PushAsync(new Vistas.NewSurvey_SelectSurvey(_selectedCustomer));
+                await Navigation.PushAsync(new Vistas.NewSurvey_SelectSurvey(_selectedCustomer, CurrentSalesman));
             }
             else
             {

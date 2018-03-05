@@ -37,9 +37,15 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Button x:Name="BtnViewSurveys" Text="Agregar Foto" HeightRequest="60"
-                    FontSize="Medium" TextColor="White" BackgroundColor="#C9723B"/>
-
+            <Button x:Name="BtnAddPhoto" Text="Agregar Foto" HeightRequest="60"
+                    FontSize="Medium" TextColor="White" BackgroundColor="#C9723B"
+                    IsVisible="{Binding NoPhoto}" Clicked="TakeAPhotoButton_OnClicked"/>
+            
+            <Button x:Name="BtnViewPhoto" Text="Ver Foto" HeightRequest="60"
+                    FontSize="Medium" TextColor="White" BackgroundColor="#C9723B"
+                    IsVisible="{Binding PhotoIsTaken}" Clicked="PickAPhotoButton_OnClicked"/>
+            
+            <Image x:Name="image"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

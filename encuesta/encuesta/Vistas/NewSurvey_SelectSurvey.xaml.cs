@@ -9,14 +9,16 @@ namespace encuesta.Vistas
     public partial class NewSurvey_SelectSurvey : ContentPage
     {
         public Customer SelectedCustomer { get; set; }
+        public User SelectedSalesman { get; set; }
         protected Database DB { get; set; }
 
 
-        public NewSurvey_SelectSurvey(Customer _customer)
+        public NewSurvey_SelectSurvey(Customer _customer, User _salesman)
         {
             InitializeComponent();
 
             SelectedCustomer = _customer;
+            SelectedSalesman = _salesman;
 
             Title = "Encuesta - " + SelectedCustomer.Name;
 
@@ -58,7 +60,7 @@ namespace encuesta.Vistas
                 return; //ItemSelected is called on deselection, which results in SelectedItem being set to null
             }
             Survey _selectedSurvey = (Survey)e.SelectedItem;
-            DB.SaveItem(new CustomerAnswer(SelectedCustomer.ID, _selectedSurvey.ID, App.UserName));
+            DB.SaveItem(new CustomerAnswer(SelectedCustomer.ID, _selectedSurvey.ID, SelectedSalesman.Username));
 
             // Create the list of questions, and the CustomerAnswer row.
             var _customerAnswer = DB.Query<CustomerAnswer>("SELECT * FROM CustomerAnswer WHERE CustomerID = ? ORDER BY ID DESC LIMIT 1", SelectedCustomer.ID).FirstOrDefault();

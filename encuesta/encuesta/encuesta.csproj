@@ -9,6 +9,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="sqlite-net-pcl" Version="1.4.118" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.1.1" />
+    <PackageReference Include="Xam.Plugin.Media" Version="3.1.3" />
     <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
   </ItemGroup>
@@ -19,6 +20,9 @@
     </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="MainPage.xaml.cs">
       <DependentUpon>*.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Vistas\ViewPhoto.xaml.cs">
+      <DependentUpon>ViewPhoto.xaml</DependentUpon>
     </Compile>
     <Compile Update="Vistas\NewSurvey_Questions.xaml.cs">
       <DependentUpon>NewSurvey_Questions.xaml</DependentUpon>

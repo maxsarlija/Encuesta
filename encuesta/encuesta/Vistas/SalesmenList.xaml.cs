@@ -136,7 +136,8 @@ namespace encuesta.Vistas
 
                 foreach (var item in _salesmenList)
                 {
-                    SalesmenCollection.Add(new Salesman(item));
+                    if (item != null)
+                        SalesmenCollection.Add(new Salesman(item));
                 }
 
                 SalesmenListView.ItemsSource = SalesmenCollection;

@@ -16,8 +16,6 @@
 
             <!-- Buttons-->
             <StackLayout VerticalOptions="CenterAndExpand">
-                <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                    Text="Iniciar Encuesta" Clicked="BtnStartSurvey_OnClick"></Button>
 
                 <Button HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" 
                         Text="Ver Encuestas" Clicked="BtnViewSurveys_OnClick"></Button>
