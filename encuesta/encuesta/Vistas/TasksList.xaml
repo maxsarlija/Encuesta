@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="encuesta.Vistas.Tasks"
+             x:Class="encuesta.Vistas.TasksList"
              Title="Tareas">
     <ContentPage.Content>
 
         <StackLayout VerticalOptions="FillAndExpand">
-            <ListView x:Name="TasksListView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowHeight="80">
+            <ListView x:Name="TasksListView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowHeight="80"
+                      ItemSelected="BtnTask_OnClickItem">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

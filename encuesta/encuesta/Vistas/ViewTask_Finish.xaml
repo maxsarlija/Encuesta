@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="encuesta.Vistas.ViewTask_Finish"
+             Title="Tareas">
+    <ContentPage.Content>
+
+            <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Name -->
+            <Label Text="Finalizar Tarea" FontSize="Large" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="3" 
+                       Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="MidnightBlue"/>
+
+            <!-- Name -->
+            <Label Text="Tarea:" FontSize="Medium" VerticalOptions="CenterAndExpand" 
+                       Grid.Row="2" Grid.Column="0" FontAttributes="Bold" TextColor="Black"/>
+            <Label x:Name="TaskName" FontSize="Medium" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="3"
+                       Grid.Row="2" Grid.Column="1" TextColor="Black"/>
+
+
+            <Label Text="Notas:" FontSize="Medium" VerticalOptions="StartAndExpand" Grid.ColumnSpan="3"
+                       Grid.Row="3" Grid.Column="0" FontAttributes="Bold" TextColor="Black"/>
+            <Editor x:Name="TaskEditor" FontSize="Medium" VerticalOptions="StartAndExpand" Grid.ColumnSpan="3" Grid.RowSpan="3"
+                       Grid.Row="4" Grid.Column="0" TextColor="Black"/>
+
+
+
+            <!-- Button test connection -->
+            <Button Text="Finalizar" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="White"
+                        Grid.Row="7" Grid.Column="0" FontAttributes="Bold" Clicked="BtnFinishTask_OnClick" Grid.ColumnSpan="4"
+                        BackgroundColor="Green"></Button>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

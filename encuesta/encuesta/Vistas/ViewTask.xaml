@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="encuesta.Vistas.ViewTask"
+             Title="Tareas">
+    <ContentPage.Content>
+
+            <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <!-- Name -->
+            <Label Text="Ver Tarea" FontSize="Large" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="3" 
+                       Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="MidnightBlue"/>
+
+            <!-- Name -->
+            <Label Text="Tarea:" FontSize="Medium" VerticalOptions="CenterAndExpand" 
+                       Grid.Row="1" Grid.Column="0" FontAttributes="Bold" TextColor="Black"/>
+            <Label x:Name="TaskName" FontSize="Medium" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="3"
+                       Grid.Row="1" Grid.Column="1" TextColor="Black"/>
+
+            <!-- Date -->
+            <Label Text="Fecha:" FontSize="Medium" VerticalOptions="CenterAndExpand" 
+                       Grid.Row="2" Grid.Column="0" FontAttributes="Bold" TextColor="Black"/>
+            <Label x:Name="TaskDate" FontSize="Medium" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="3" 
+                       Grid.Row="2" Grid.Column="1" TextColor="#67B19F"/>
+
+
+            <!-- Details -->
+            <Label Text="Detalles:" FontSize="Medium" VerticalOptions="StartAndExpand"
+                       Grid.Row="3" Grid.Column="0" FontAttributes="Bold" TextColor="Black"/>
+            <Label x:Name="TaskDetails" FontSize="Medium" VerticalOptions="StartAndExpand" Grid.ColumnSpan="3" Grid.RowSpan="2"
+                       Grid.Row="3" Grid.Column="1" TextColor="Black" LineBreakMode="WordWrap"/>
+
+
+            <!-- Date -->
+            <Label Text="Aviso:" FontSize="Medium" VerticalOptions="CenterAndExpand"
+                       Grid.Row="5" Grid.Column="0" FontAttributes="Bold" TextColor="Black"/>
+            <TimePicker x:Name="mTimePicker" Time="{Binding Alarm, Mode=TwoWay}" VerticalOptions="CenterAndExpand"
+                       Grid.Row="5" Grid.Column="1" />
+
+
+            <!-- Date -->
+            <Label Text="Estado:" FontSize="Medium" VerticalOptions="CenterAndExpand"
+                       Grid.Row="6" Grid.Column="0" FontAttributes="Bold" TextColor="Black"/>
+            <Label x:Name="TaskStatus" FontSize="Medium" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="3" 
+                       Grid.Row="6" Grid.Column="1"/>
+
+
+            <!-- Buttons -->
+            <Button Text="Guardar" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="White"
+                        Grid.Row="7" Grid.Column="0" FontAttributes="Bold" Clicked="BtnSaveTask_OnClick" Grid.ColumnSpan="2"
+                        BackgroundColor="#C9723B" x:Name="btnSave"></Button>
+            <Button Text="Finalizar tarea" FontSize="Medium" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" TextColor="White"
+                        Grid.Row="7" Grid.Column="2" FontAttributes="Bold" Clicked="BtnFinishTask_OnClick" Grid.ColumnSpan="2"
+                        BackgroundColor="#07A2BF" x:Name="btnFinish"></Button>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

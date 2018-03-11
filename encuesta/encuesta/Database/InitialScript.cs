@@ -10,6 +10,17 @@ namespace encuesta
     {
         public InitialScript(Database database)
         {
+            // Check for finished tasks.
+            database.CreateTable<Tasks>();
+            var _tasks = database.GetItems<Tasks>();
+            if (_tasks != null)
+            {
+                foreach (var item in _tasks.Where(x => x.Status == encuesta.Dominio.Enum.TaskStatus.PENDING))
+                {
+                    database.DeleteItem<Tasks>(item.ID);
+                }
+            }
+
             database.DropTable<Class>();
             database.DropTable<Customer>();
             database.DropTable<Group>();
@@ -22,9 +33,9 @@ namespace encuesta
             database.DropTable<SubGroup>();
             database.DropTable<Survey>();
             database.DropTable<SurveyGroup>();
-            database.DropTable<Task>();
             database.DropTable<User>();
             database.DropTable<Zone>();
+
 
             database.CreateTable<Answer>();
             database.CreateTable<Class>();
@@ -40,7 +51,6 @@ namespace encuesta
             database.CreateTable<SubGroup>();
             database.CreateTable<Survey>();
             database.CreateTable<SurveyGroup>();
-            database.CreateTable<Task>();
             database.CreateTable<User>();
             database.CreateTable<Zone>();
 

@@ -38,14 +38,15 @@ namespace encuesta.Vistas
             {
 
                 var customerAnswers = DB.Query<CustomerAnswer>("SELECT * FROM CustomerAnswer").Where(x => x.Status.Equals(SurveyStatus.COMPLETED)).Count();
+                var tasks = DB.Query<encuesta.Tasks>("SELECT * FROM Task").Where(x => x.Status.Equals(encuesta.Dominio.Enum.TaskStatus.COMPLETED)).Count();
 
-                if(customerAnswers > 0)
+                if (customerAnswers > 0 || tasks > 0)
                 {
                     await Navigation.PushAsync(new Vistas.SynchronizationSurveys());
                 } 
                 else
                 {
-                    await DisplayAlert("Alerta", "No hay encuestas finalizadas para sincronizar.", "OK");
+                    await DisplayAlert("Alerta", "No hay encuestas o tareas finalizadas para sincronizar.", "OK");
                 }
             }
             else

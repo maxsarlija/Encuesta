@@ -54,14 +54,26 @@ namespace encuesta.Vistas
             {
                 // Get all customer answers that have been completed fully.
                 var customerAnswers = DB.Query<CustomerAnswer>("SELECT * FROM CustomerAnswer").Where(x => x.Status.Equals(SurveyStatus.COMPLETED));
+                var tasks = DB.Query<encuesta.Tasks>("SELECT * FROM Task").Where(x => x.Status.Equals(Dominio.Enum.TaskStatus.COMPLETED));
 
-
-
-                foreach (var item in customerAnswers)
+                // Sync all the surveys that have been completed.
+                if (customerAnswers != null)
                 {
-                    var result = await PostCustomerAnswerAsync(item);
+                    foreach (var item in customerAnswers)
+                    {
+                        var result = await PostCustomerAnswerAsync(item);
+                    }
                 }
-                
+
+                // Sync all the tasks that have been completed.
+                if (customerAnswers != null)
+                {
+                    foreach (var item in tasks)
+                    {
+                        var result = await PostTasksAsync(item);
+                    }
+                }
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     DisplayAlert("Sincronización", SynchroInfoList.Any(x => !x.Success) ?
@@ -181,7 +193,38 @@ namespace encuesta.Vistas
             return false;
         }
 
+        public async Task<bool> PostTasksAsync(encuesta.Tasks _task)
+        {
+            var result = false;
+            var httpClient = new HttpClient();
 
+            try
+            {
+                var uriTask = new Uri("http://s-tmkt.com/dev/encuesta/app/PostTasks.php");
+                var httpContent = new StringContent(JsonConvert.SerializeObject(_task), Encoding.UTF8, "application/json");
+
+                var response = await httpClient.PostAsync(uriTask, httpContent);
+
+                if (response.Content != null)
+                {
+                    var jsonString = response.Content.ReadAsStringAsync().Result;
+                }
+
+                result = true;
+
+                UpdateSynchro(new SynchroInfo("Tarea transmitida exitosamente.", result));
+                DB.DeleteItem<encuesta.Tasks>(_task.ID);
+
+                return result;
+            }
+            catch (Exception e)
+            {
+                UpdateSynchro(new SynchroInfo("Error transmitiendo tarea.", result));
+                await DisplayAlert("Error", e.Message, "OK");
+            }
+
+            return false;
+        }
         #endregion
     }
 }

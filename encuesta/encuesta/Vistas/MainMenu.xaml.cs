@@ -15,17 +15,12 @@ namespace encuesta.Vistas
         public MainMenu()
         {
             InitializeComponent();
-
-            _database = new Database("Encuesta");
-            
         }
 
 
         async void BtnNewSurvey_OnClick(object sender, System.EventArgs e)
         {
-
             await Navigation.PushAsync(new Vistas.NewSurvey_SelectSalesman());
-
         }
 
         async void BtnViewSurveys_OnClick(object sender, System.EventArgs e)
@@ -35,7 +30,7 @@ namespace encuesta.Vistas
 
         async void BtnTasks_OnClick(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new Vistas.Tasks());
+            await Navigation.PushAsync(new Vistas.TasksList());
         }
 
         async void BtnSync_OnClick(object sender, System.EventArgs e)

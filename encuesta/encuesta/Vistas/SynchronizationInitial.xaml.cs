@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using Plugin.Connectivity;
+using System.Diagnostics;
 
 namespace encuesta.Vistas
 {
@@ -182,8 +183,17 @@ namespace encuesta.Vistas
                 UpdateSynchro(new SynchroInfo("Tareas", tasks != null));
                 if (tasks != null)
                 {
-                    DB.DeleteAll<Task>();
-                    foreach (var item in tasks) { DB.InsertItemWithID(item); }
+                    foreach (var item in tasks)
+                    {
+                        try
+                        {
+                            DB.InsertItemWithID(item);
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.WriteLine(e.Message);
+                        } 
+                    }
                 }
 
                 Device.BeginInvokeOnMainThread(() =>
@@ -453,16 +463,16 @@ namespace encuesta.Vistas
             return null;
         }
 
-        public async Task<List<Task>> GetTasksAsync()
+        public async Task<List<encuesta.Tasks>> GetTasksAsync()
         {
             var httpClient = new HttpClient();
 
             try
             {
-                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetTasks.php");
+                var uri = new Uri("http://s-tmkt.com/dev/encuesta/app/GetTasks.php?id=" + App.User.ID);
                 var jsonResponse = httpClient.GetAsync(uri).Result;
                 var jsonString = jsonResponse.Content.ReadAsStringAsync();
-                var list = JsonConvert.DeserializeObject<List<Task>>(jsonString.Result);
+                var list = JsonConvert.DeserializeObject<List<encuesta.Tasks>>(jsonString.Result);
 
                 return list;
             }

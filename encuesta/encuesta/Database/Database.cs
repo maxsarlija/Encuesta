@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using SQLite;
 using Xamarin.Forms;
@@ -46,6 +45,7 @@ namespace encuesta
             return SQLite.GetSize(DatabaseName);
         }
 
+
         public int SaveItem<T>(T item)
         {
             lock (locker)
@@ -60,6 +60,19 @@ namespace encuesta
                 {
                     return connection.Insert(item);
                 }
+            }
+        }
+
+        public int UpdateItem<T>(T item)
+        {
+            lock (locker)
+            {
+                var id = ((BaseItem)(object)item).ID;
+                if (id != 0)
+                {
+                    connection.Update(item);
+                }
+                return id;
             }
         }
 
