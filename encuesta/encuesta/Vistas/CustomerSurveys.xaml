@@ -22,9 +22,9 @@
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
 
-                                <Label Text="{Binding Survey.Name}" FontSize="Medium" VerticalOptions="CenterAndExpand" 
+                                <Label Text="{Binding SurveyName}" FontSize="Medium" VerticalOptions="CenterAndExpand" 
                                        Grid.Row="0" Grid.Column="0" LineBreakMode="TailTruncation" FontAttributes="Bold"/>
-                                <Label Text="{Binding CustomerAnswer.Status}" FontSize="Small" VerticalOptions="CenterAndExpand" 
+                                <Label Text="{Binding Status}" FontSize="Small" VerticalOptions="CenterAndExpand" 
                                        Grid.Row="0" Grid.RowSpan="1" Grid.Column="1" HorizontalOptions="EndAndExpand" 
                                        x:Name="CustomerAnswerStatus" TextColor="{Binding StatusColor}" FontAttributes="Bold"/>
                                 <Label Text="{Binding Date}" FontSize="Small" VerticalOptions="CenterAndExpand" 

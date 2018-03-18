@@ -4,11 +4,11 @@
              x:Class="encuesta.Vistas.NewSurvey_SelectSalesman"
              Title="Vendedores">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
             <SearchBar x:Name="searchCustomer"
             Placeholder="Search" HorizontalOptions="FillAndExpand" HeightRequest="60"
            TextChanged="SearchBar_OnTextChanged"/>
-            <Grid  HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+            <Grid RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60" />
                 </Grid.RowDefinitions>

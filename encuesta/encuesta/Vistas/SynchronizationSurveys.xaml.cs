@@ -61,12 +61,13 @@ namespace encuesta.Vistas
                 {
                     foreach (var item in customerAnswers)
                     {
-                        var result = await PostCustomerAnswerAsync(item);
+                        if(DB.GetItems<Survey>().Where(x => x.ID == item.SurveyID).FirstOrDefault() != null)
+                            await PostCustomerAnswerAsync(item);
                     }
                 }
 
                 // Sync all the tasks that have been completed.
-                if (customerAnswers != null)
+                if (tasks != null)
                 {
                     foreach (var item in tasks)
                     {

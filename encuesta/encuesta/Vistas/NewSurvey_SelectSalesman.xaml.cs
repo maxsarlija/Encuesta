@@ -57,33 +57,7 @@ namespace encuesta.Vistas
 
 
             SalesmenCollection = new ObservableCollection<Salesman>();
-
-            // Check if there are any customers for this salesman.
-            var UserIsSupervisor = App.User.ClassID == UserClass.SUPERVISOR;
-
-            // If there are any salesmen for this supervisor, show them. If not, just show the current user as the salesman. 
-            var _supervisorSalesmen = DB.GetItems<Salesmen>().Where(x => x.SupervisorID.Equals(App.User.ID));
-            var _salesmenList = new List<User>();
-            if(UserIsSupervisor)
-            {
-                foreach (var item in _supervisorSalesmen)
-                {   
-                    _salesmenList.Add(DB.GetItems<User>().Where(x => x.ID == item.SalesmanID).FirstOrDefault());
-                }
-            } else {
-                foreach (var item in DB.GetItems<User>().Where(c => c.ID == App.User.ID))
-                {
-                    _salesmenList.Add(item);
-                }
-            }
-            
-
-            foreach (var item in _salesmenList)
-            {
-                SalesmenCollection.Add(new Salesman(item));
-            }
-
-            SalesmenListView.ItemsSource = SalesmenCollection;
+            GetDefaultSalesmen();
         }
 
 
@@ -108,7 +82,10 @@ namespace encuesta.Vistas
             SalesmenListView.BeginRefresh();
 
             if (string.IsNullOrWhiteSpace(e.NewTextValue))
-                SalesmenListView.ItemsSource = SalesmenCollection;
+            {
+                SalesmenCollection.Clear();
+                GetDefaultSalesmen();
+            }
             else
             {
                 SalesmenCollection.Clear();
@@ -143,6 +120,38 @@ namespace encuesta.Vistas
             }
 
             SalesmenListView.EndRefresh();
+        }
+
+        protected void GetDefaultSalesmen()
+        {
+            // Check if there are any customers for this salesman.
+            var UserIsSupervisor = App.User.ClassID == UserClass.SUPERVISOR;
+
+            // If there are any salesmen for this supervisor, show them. If not, just show the current user as the salesman. 
+            var _supervisorSalesmen = DB.GetItems<Salesmen>().Where(x => x.SupervisorID.Equals(App.User.ID));
+            var _salesmenList = new List<User>();
+            if (UserIsSupervisor)
+            {
+                foreach (var item in _supervisorSalesmen)
+                {
+                    _salesmenList.Add(DB.GetItems<User>().Where(x => x.ID == item.SalesmanID).FirstOrDefault());
+                }
+            }
+            else
+            {
+                foreach (var item in DB.GetItems<User>().Where(c => c.ID == App.User.ID))
+                {
+                    _salesmenList.Add(item);
+                }
+            }
+
+
+            foreach (var item in _salesmenList)
+            {
+                SalesmenCollection.Add(new Salesman(item));
+            }
+
+            SalesmenListView.ItemsSource = SalesmenCollection;
         }
 
     }

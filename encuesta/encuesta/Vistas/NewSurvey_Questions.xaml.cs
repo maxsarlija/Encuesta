@@ -120,10 +120,10 @@ namespace encuesta.Vistas
                 DB.SaveItem(SelectedCustomerAnswer);
 
                 await DisplayAlert("Encuesta", "La encuesta ha finalizado.", "OK");
-                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count]);
-                // This PopAsync will now go to List Page
-                await Navigation.PopAsync();
+                OnBackButtonPressed();
+                OnBackButtonPressed();
             }
+
 
         }
         protected override bool OnBackButtonPressed()

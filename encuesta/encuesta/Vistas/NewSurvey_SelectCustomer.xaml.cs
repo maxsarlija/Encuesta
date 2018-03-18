@@ -37,25 +37,12 @@ namespace encuesta.Vistas
         public NewSurvey_SelectCustomer(User _salesman)
         {
             InitializeComponent();
-            
+
             DB = new Database("Encuesta");
             CurrentSalesman = _salesman;
 
             CustomerCollection = new ObservableCollection<Customer>();
-
-            // Check if there are any customers for this salesman.
-            var SalesmanHasCustomers = DB.GetItems<Customer>().Where(c => c.SalesmanID == CurrentSalesman.ID).Count() > 0;
-
-            // If there are any customer for the salesmen, show them. If not, just show the ones for the zone of the User. 
-            var _customersList = SalesmanHasCustomers ? DB.GetItems<Customer>().Where(c => c.SalesmanID == CurrentSalesman.ID)
-                                                      : DB.GetItems<Customer>().Where(c => c.ZoneID == App.User.ZoneID);
-
-            foreach (var item in _customersList)
-            {
-                CustomerCollection.Add(item);
-            }
-
-            CustomersListView.ItemsSource = CustomerCollection;
+            GetDefaultCustomers();
         }
 
 
@@ -67,7 +54,7 @@ namespace encuesta.Vistas
             }
 
             // Click on Customer will lead to the available surveys.
-            var _selectedCustomer = (Customer) e.SelectedItem;
+            var _selectedCustomer = (Customer)e.SelectedItem;
 
             // Check if the matinal plan survey has been done.
             var matinalPlanIsDone = DB.Query<CustomerAnswer>("SELECT CA.* " +
@@ -117,7 +104,10 @@ namespace encuesta.Vistas
             CustomersListView.BeginRefresh();
 
             if (string.IsNullOrWhiteSpace(e.NewTextValue))
-                CustomersListView.ItemsSource = CustomerCollection;
+            {
+                CustomerCollection.Clear();
+                GetDefaultCustomers();
+            }
             else
             {
                 CustomerCollection.Clear();
@@ -141,6 +131,25 @@ namespace encuesta.Vistas
             }
 
             CustomersListView.EndRefresh();
+        }
+
+
+        protected void GetDefaultCustomers()
+        {
+
+            // Check if there are any customers for this salesman.
+            var SalesmanHasCustomers = DB.GetItems<Customer>().Where(c => c.SalesmanID == CurrentSalesman.ID).Count() > 0;
+
+            // If there are any customer for the salesmen, show them. If not, just show the ones for the zone of the User. 
+            var _customersList = SalesmanHasCustomers ? DB.GetItems<Customer>().Where(c => c.SalesmanID == CurrentSalesman.ID)
+                                                      : DB.GetItems<Customer>().Where(c => c.ZoneID == App.User.ZoneID);
+
+            foreach (var item in _customersList)
+            {
+                CustomerCollection.Add(item);
+            }
+
+            CustomersListView.ItemsSource = CustomerCollection;
         }
 
     }
